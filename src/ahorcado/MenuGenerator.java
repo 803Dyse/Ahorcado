@@ -9,5 +9,12 @@ package ahorcado;
  * @author Bilo Alejandro Martins Gonzalez
  */
 public class MenuGenerator {
-    
+    public static void main(String[] args) {
+        MenuGenerator menuGenerator = new MenuGenerator();
+        
+        do {
+            menuGenerator.hangMan = new HangMan(menuGenerator.showInitMenu());
+            menuGenerator.showGameMenu();   
+        } while (!menuGenerator.showExitMenu());
+    }
 }

@@ -8,7 +8,7 @@ package ahorcado;
  *
  * @author Bilo Alejandro Martins Gonzalez
  */
-public class Ahorcado {
+public class HangMan {
 
     /**
      * @param args the command line arguments

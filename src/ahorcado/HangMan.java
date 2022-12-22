@@ -25,6 +25,12 @@ public class HangMan {
         return null;
     }
 
+    /**
+     *
+     * Constructor da clase Hangman
+     * 
+     * @param hangMan
+     */
     public HangMan(String hangMan) {
         HiddenWord hiddenWord = new HiddenWord(hangMan);
     }

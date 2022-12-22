@@ -25,6 +25,10 @@ public class HangMan {
         return null;
     }
 
+    public HangMan(String hangMan) {
+        HiddenWord hiddenWord = new HiddenWord(hangMan);
+    }
+
     /**
      *
      * Obtén un String coa lista de caracteres fallados acumulados, separados

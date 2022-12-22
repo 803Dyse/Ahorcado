@@ -10,6 +10,8 @@ package ahorcado;
  */
 public class MenuGenerator {
 
+    private HangMan hangMan;
+
     /**
      * Mostra por pantalla o menú principal e xenera a palabra que o usuario vai
      * adiviñar
@@ -31,7 +33,7 @@ public class MenuGenerator {
      * Este metodo pregunta al usuario si quiere seguir jugando o no
      */
     private boolean showExitMenu() {
-
+        return false;
     }
 
     /**

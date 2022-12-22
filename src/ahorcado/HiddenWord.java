@@ -15,6 +15,8 @@ public class HiddenWord {
 
     /**
      *
+     * Constructor da clase HiddenWord
+     *
      * @param word
      */
     public HiddenWord(String word) {
@@ -24,8 +26,12 @@ public class HiddenWord {
 
     /**
      *
-     * @param c
-     * @return
+     * Comproba se un caracter aparece na lista de caracteres da palabra,
+     * marcando todas as aparicións dese caracter como acertadas
+     *
+     * @param c o caracter a comprobar
+     * @return Se o caracter aparece na palabra devolve true, se non devolve
+     * false
      */
     public boolean checkChar(char c) {
         return false;
@@ -33,15 +39,20 @@ public class HiddenWord {
 
     /**
      *
-     * @return
+     * Devolve a palabra substituíndo os caracteres non acertados por guións
+     *
+     * @return Devolve a palabra substituíndo os caracteres non acertados por
+     * guións
      */
     public String show() {
         return "";
     }
 
     /**
+     * Este método o usaremos para mostrar ao usuario ao final do xogo, se
+     * perde, cal era a palabra oculta
      *
-     * @return
+     * @return Devolve a palabra completa, incluíndo os caracteres non acertados
      */
     public String showFullWord() {
         return "";
@@ -49,7 +60,11 @@ public class HiddenWord {
 
     /**
      *
-     * @return
+     * Este método permitiranos saber se o usuario adiviñou a palabra e polo
+     * tanto gañou a a partida
+     *
+     * @return Indica se a palabra é totalmente visible, é dicir, se todos os
+     * caracteres están xa acertados
      */
     public boolean isVisible() {
         return false;

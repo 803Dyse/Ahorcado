@@ -27,7 +27,7 @@ public class HangMan {
 
     /**
      *
-     * Constructor da clase Hangman
+     * Constructor da clase HangMan
      * 
      * @param hangMan
      */

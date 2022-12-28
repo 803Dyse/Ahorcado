@@ -4,6 +4,8 @@
  */
 package ahorcado;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Bilo Alejandro Martins González y Raúl Parada de la Fuente
@@ -18,7 +20,7 @@ public class MenuGenerator {
      */
     private String showInitMenu() {
         WordGenerator word = new WordGenerator();
-        return "a";
+        return word.generateWord();
     }
 
     /**
@@ -26,14 +28,21 @@ public class MenuGenerator {
      * tambien permite una cantidad limitada de fallos mientras pide las letras
      */
     private void showGameMenu() {
-        System.out.println("");
+        System.out.println("Inserte letra");
     }
 
     /**
      * Este metodo pregunta al usuario si quiere seguir jugando o no
      */
     private boolean showExitMenu() {
-        return false;
+        System.out.println("Quieres seguir jugando o no");
+        Scanner scan = new Scanner(System.in);
+        char result = scan.nextLine().charAt(0);
+        if (result == 'S' || result == 's') {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     /**

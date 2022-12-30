@@ -12,14 +12,12 @@ import java.util.Random;
  */
 public class WordGenerator {
 
-    private final String[] WORDLIST = {"patacas", "teclado", "chocolate", "luna", "java"};
+    public static final String[] WORDLIST = {"patacas", "bateria", "cacao", "luna", "java"};
 
     public String generateWord() {
         Random randomWord = new Random();
-        for (int i = 0; i < WORDLIST.length; i++) {
-            int numberGenerated = randomWord.nextInt(WORDLIST.length);
-        }
-
-        return "";
+        int numberGenerated = randomWord.nextInt(WORDLIST.length);
+        String wordGenerated = WORDLIST[numberGenerated];
+        return wordGenerated;
     }
 }

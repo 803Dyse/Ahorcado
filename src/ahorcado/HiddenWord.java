@@ -20,7 +20,7 @@ public class HiddenWord {
      * @param word
      */
     public HiddenWord(String word) {
-        characters = new char[word.toCharArray().length];
+        characters = word.toCharArray();
         hits = new boolean[word.toCharArray().length];
     }
 

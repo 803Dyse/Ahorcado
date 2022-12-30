@@ -52,7 +52,15 @@ public class HiddenWord {
      * guións
      */
     public String show() {
-        return "";
+        String hiddenWord = "";
+        for (int i = 0; i < characters.length; i++) {
+            if (hits[i]) {
+                hiddenWord += characters[i];
+            } else {
+            hiddenWord += "-";
+            }
+        }
+        return hiddenWord;
     }
 
     /**
@@ -62,7 +70,11 @@ public class HiddenWord {
      * @return Devolve a palabra completa, incluíndo os caracteres non acertados
      */
     public String showFullWord() {
-        return "";
+        String readWord="";
+        for (int i = 0; i < characters.length; i++) {
+            readWord += characters[i];
+        }
+        return readWord;
     }
 
     /**

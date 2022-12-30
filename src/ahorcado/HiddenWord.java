@@ -34,7 +34,14 @@ public class HiddenWord {
      * false
      */
     public boolean checkChar(char c) {
-        return false;
+        boolean flagCheck = false;
+        for (int i = 0; i < characters.length; i++) {
+            if (c == characters[i]) {
+                hits[i] = true;
+                flagCheck = true;
+            }
+        }
+        return flagCheck;
     }
 
     /**

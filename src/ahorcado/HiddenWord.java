@@ -34,11 +34,6 @@ public class HiddenWord {
      * false
      */
     public boolean checkChar(char c) {
-        for (int i = 0; i < characters.length; i++) {
-            if (characters[i] == c) {
-                System.out.println("Aaaaa");
-            }
-        }
         return false;
     }
 
@@ -50,7 +45,7 @@ public class HiddenWord {
      * guións
      */
     public String show() {
-        return characters.toString();
+        return "";
     }
 
     /**

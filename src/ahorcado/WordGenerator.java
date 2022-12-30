@@ -4,6 +4,8 @@
  */
 package ahorcado;
 
+import java.util.Random;
+
 /**
  *
  * @author Bilo Alejandro Martins González y Raúl Parada de la Fuente
@@ -13,10 +15,11 @@ public class WordGenerator {
     private final String[] WORDLIST = {"patacas", "teclado", "chocolate", "luna", "java"};
 
     public String generateWord() {
-        
-            int numberGenerated = new java.util.Random().nextInt(WORDLIST.length);
-            String word = WORDLIST[numberGenerated];
+        Random randomWord = new Random();
+        for (int i = 0; i < WORDLIST.length; i++) {
+            int numberGenerated = randomWord.nextInt(WORDLIST.length);
+        }
 
-        return word;
+        return "";
     }
 }

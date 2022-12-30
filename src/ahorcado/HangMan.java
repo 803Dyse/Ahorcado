@@ -16,6 +16,12 @@ public class HangMan {
     private ArrayList fails;
 
     /**
+     * O número máximo de fallos que pode cometer o xogador antes de darlle a
+     * partida por perdida
+     */
+    public static final int MAX_FAILS = 6;
+
+    /**
      *
      * Obtén a lista de caracteres falados acumlados na partida
      *
@@ -28,7 +34,7 @@ public class HangMan {
     /**
      *
      * Constructor da clase HangMan
-     * 
+     *
      * @param hangMan
      */
     public HangMan(String hangMan) {

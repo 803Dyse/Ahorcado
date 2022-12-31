@@ -74,7 +74,7 @@ public class HangMan {
      *
      * Devolve a palabra oculta mostrando todas as súas letras
      *
-     * @return Devolve a palabra oculta
+     * @return Devolve a palabra oculta mostrando todas as súas letras
      */
     public String showFullWord() {
         return hiddenWord.showFullWord();

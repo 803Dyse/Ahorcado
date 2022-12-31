@@ -115,7 +115,6 @@ public class HangMan {
     public boolean maxFailsExceeded() {
         if (fails.size() >= MAX_FAILS) {
             System.out.println("Game Over");
-            fails.size();
             return true;
         } else {
             return false;

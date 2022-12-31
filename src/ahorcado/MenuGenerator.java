@@ -18,7 +18,7 @@ public class MenuGenerator {
      */
     private String showInitMenu() {
         WordGenerator word = new WordGenerator();
-        return "a";
+        return word.generateWord();
     }
 
     /**

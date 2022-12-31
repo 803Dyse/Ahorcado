@@ -12,7 +12,14 @@ import java.util.ArrayList;
  */
 public class HangMan {
 
+    /**
+     * Obxecto da clase HiddenWord coa palabra a adiviñar no xogo
+     */
     private HiddenWord hiddenWord;
+    /**
+     * ArrayList de caracteres no que se van almacenando as letras introducidas
+     * polo usuario que non están na palabra oculta
+     */
     private ArrayList fails;
 
     /**

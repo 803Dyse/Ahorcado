@@ -89,7 +89,7 @@ public class HiddenWord {
         boolean visibleFlag = false;
         for (int i = 0; i < characters.length; i++) {
             if (hits[i]) {
-                visibleFlag=true;
+                visibleFlag = true;
             }
         }
 

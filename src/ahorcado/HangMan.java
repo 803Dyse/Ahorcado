@@ -57,7 +57,7 @@ public class HangMan {
      * espazos en blanco
      */
     public String getStringFails() {
-        String failsString="";
+        String failsString = "";
         for (int i = 0; i < fails.size(); i++) {
             failsString += fails.get(i);
         }
@@ -91,6 +91,9 @@ public class HangMan {
      * @param c é o caracter que se proba
      */
     public void tryChar(char c) {
+        if (!hiddenWord.checkChar(c)) {
+            fails.add(c);
+        }
     }
 
     /**

@@ -113,6 +113,12 @@ public class HangMan {
      * @return Devolve true o false
      */
     public boolean maxFailsExceeded() {
-        return false;
+        if (fails.size() >= MAX_FAILS) {
+            System.out.println("Game Over");
+            fails.size();
+            return true;
+        } else {
+            return false;
+        }
     }
 }

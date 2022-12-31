@@ -23,22 +23,22 @@ public class HangMan {
 
     /**
      *
+     * Constructor da clase HangMan
+     *
+     * @param hangMan
+     */
+    public HangMan(String hangMan) {
+        hiddenWord = new HiddenWord(hangMan);
+    }
+
+    /**
+     *
      * Obtén a lista de caracteres falados acumlados na partida
      *
      * @return Devolve a lista de caracteres
      */
     public ArrayList<Character> getFails() {
         return null;
-    }
-
-    /**
-     *
-     * Constructor da clase HangMan
-     *
-     * @param hangMan
-     */
-    public HangMan(String hangMan) {
-        HiddenWord hiddenWord = new HiddenWord(hangMan);
     }
 
     /**

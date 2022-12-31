@@ -57,7 +57,7 @@ public class HiddenWord {
             if (hits[i]) {
                 hiddenWord += characters[i];
             } else {
-            hiddenWord += "-";
+                hiddenWord += "-";
             }
         }
         return hiddenWord;
@@ -70,7 +70,7 @@ public class HiddenWord {
      * @return Devolve a palabra completa, incluíndo os caracteres non acertados
      */
     public String showFullWord() {
-        String readWord="";
+        String readWord = "";
         for (int i = 0; i < characters.length; i++) {
             readWord += characters[i];
         }
@@ -86,6 +86,13 @@ public class HiddenWord {
      * caracteres están xa acertados
      */
     public boolean isVisible() {
-        return false;
+        boolean visibleFlag = false;
+        for (int i = 0; i < characters.length; i++) {
+            if (hits[i]) {
+                visibleFlag=true;
+            }
+        }
+
+        return visibleFlag;
     }
 }

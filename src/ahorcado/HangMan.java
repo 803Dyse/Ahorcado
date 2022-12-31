@@ -45,7 +45,7 @@ public class HangMan {
      * @return Devolve a lista de caracteres
      */
     public ArrayList<Character> getFails() {
-        return null;
+        return fails;
     }
 
     /**
@@ -57,7 +57,11 @@ public class HangMan {
      * espazos en blanco
      */
     public String getStringFails() {
-        return "";
+        String failsString="";
+        for (int i = 0; i < fails.size(); i++) {
+            failsString += fails.get(i);
+        }
+        return failsString;
     }
 
     /**

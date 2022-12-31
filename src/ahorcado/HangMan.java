@@ -67,7 +67,7 @@ public class HangMan {
      * @return Devolve a palabra oculta con guións
      */
     public String showHiddenWord() {
-        return "";
+        return hiddenWord.show();
     }
 
     /**
@@ -77,7 +77,7 @@ public class HangMan {
      * @return Devolve a palabra oculta
      */
     public String showFullWord() {
-        return "";
+        return hiddenWord.showFullWord();
     }
 
     /**

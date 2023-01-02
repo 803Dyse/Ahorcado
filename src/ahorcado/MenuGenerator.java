@@ -36,10 +36,10 @@ public class MenuGenerator {
             System.out.println("hola primo introduce letras vamo a juga al hanman:");
             char letter = scan.nextLine().charAt(0);
             hangMan.tryChar(letter);
-            System.out.println("Estos son os fallos:" + hangMan.getStringFails());
+            System.out.println("Estos son os fallos: " + hangMan.getStringFails());
             System.out.println(hangMan.showHiddenWord());
         }
-        System.out.println("la solucion es:" + hangMan.showFullWord());
+        System.out.println("A solucion e: " + hangMan.showFullWord());
     }
 
     /**

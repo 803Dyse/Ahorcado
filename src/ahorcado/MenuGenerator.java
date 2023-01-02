@@ -10,6 +10,9 @@ package ahorcado;
  */
 public class MenuGenerator {
 
+    /**
+     * Obxecto da clase HangMan que xestiona o funcionamento da partida actual
+     */
     private HangMan hangMan;
 
     /**

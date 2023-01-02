@@ -4,6 +4,8 @@
  */
 package ahorcado;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Bilo Alejandro Martins González y Raúl Parada de la Fuente
@@ -29,7 +31,15 @@ public class MenuGenerator {
      * tambien permite una cantidad limitada de fallos mientras pide las letras
      */
     private void showGameMenu() {
-        System.out.println("");
+        Scanner scan = new Scanner(System.in);
+        while (!hangMan.isGameOver()) {
+            System.out.println("hola primo introduce letras vamo a juga al hanman:");
+            char letter = scan.nextLine().charAt(0);
+            hangMan.tryChar(letter);
+            System.out.println("Estos son os fallos:" + hangMan.getStringFails());
+            System.out.println(hangMan.showHiddenWord());
+        }
+        System.out.println("la solucion es:" + hangMan.showFullWord());
     }
 
     /**

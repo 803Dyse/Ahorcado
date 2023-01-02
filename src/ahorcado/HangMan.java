@@ -103,11 +103,15 @@ public class HangMan {
 
     /**
      *
-     * Comproba se rematou a partida
+     * Comproba se rematou a partida, ben porque se chegou ao límite de fallos
+     * ou ben porque se adiviñou toda a palabra oculta
      *
      * @return Devolve true o false
      */
     public boolean isGameOver() {
+        if (hiddenWord.isVisible() || maxFailsExceeded()) {
+            return true;
+        }
         return false;
     }
 

@@ -24,7 +24,7 @@ public class WordGenerator {
         Random randomWord = new Random();
         int numberGenerated = randomWord.nextInt(WORDLIST.length);
         String wordGenerated = WORDLIST[numberGenerated];
-        System.out.println("Depuración: " + wordGenerated);
+        System.out.println("Depuracion: " + wordGenerated);
         return wordGenerated;
     }
 }

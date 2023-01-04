@@ -41,6 +41,7 @@ public class HangMan {
      */
     public HangMan(String hangMan) {
         hiddenWord = new HiddenWord(hangMan);
+        fails = new ArrayList();
     }
 
     /**
@@ -123,7 +124,7 @@ public class HangMan {
      */
     public boolean maxFailsExceeded() {
         if (fails.size() >= MAX_FAILS) {
-            System.out.println("Game Over");
+            fails.clear();
             return true;
         } else {
             return false;

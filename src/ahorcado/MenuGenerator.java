@@ -31,9 +31,10 @@ public class MenuGenerator {
      * tambien permite una cantidad limitada de fallos mientras pide las letras
      */
     private void showGameMenu() {
+        System.out.println("Bienvenido al juego del ahorcado");
         Scanner scan = new Scanner(System.in);
         while (!hangMan.isGameOver()) {
-            System.out.println("hola primo introduce letras vamo a juga al hanman:");
+            System.out.println("Introduce una letra y intenta adivinar la palabra:");
             char letter = scan.nextLine().charAt(0);
             hangMan.tryChar(letter);
             System.out.println("Estos son os fallos: " + hangMan.getStringFails());
@@ -46,6 +47,15 @@ public class MenuGenerator {
      * Este metodo pregunta al usuario si quiere seguir jugando o no
      */
     private boolean showExitMenu() {
+        System.out.println("quieres seguir jugando?");
+        System.out.println("s -> CONTINUAR ");
+        System.out.println("n -> SALIR");
+        Scanner sc = new Scanner(System.in);
+        char userOption = sc.nextLine().charAt(0);
+        if (userOption != 's') {
+            return true;
+        }
+        System.out.println("Muchas por jugar al ahorcado :)");
         return false;
     }
 

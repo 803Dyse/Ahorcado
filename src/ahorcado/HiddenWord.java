@@ -86,13 +86,12 @@ public class HiddenWord {
      * caracteres están xa acertados
      */
     public boolean isVisible() {
-        boolean visibleFlag = false;
         for (int i = 0; i < characters.length; i++) {
-            if (hits[i]) {
-                visibleFlag = true;
+            if (!hits[i]) {
+                return false;
             }
         }
 
-        return visibleFlag;
+        return true;
     }
 }

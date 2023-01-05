@@ -53,9 +53,9 @@ public class MenuGenerator {
         Scanner sc = new Scanner(System.in);
         char userOption = sc.nextLine().toLowerCase().charAt(0);
         if (userOption != 's') {
+            System.out.println("Muchas por jugar al ahorcado :)");
             return true;
         }
-        System.out.println("Muchas por jugar al ahorcado :)");
         return false;
     }
 

@@ -35,7 +35,7 @@ public class MenuGenerator {
         Scanner scan = new Scanner(System.in);
         while (!hangMan.isGameOver()) {
             System.out.println("Introduce una letra y intenta adivinar la palabra:");
-            char letter = scan.nextLine().charAt(0);
+            char letter = scan.nextLine().toLowerCase().charAt(0);
             hangMan.tryChar(letter);
             System.out.println("Estos son os fallos: " + hangMan.getStringFails());
             System.out.println(hangMan.showHiddenWord());
@@ -51,7 +51,7 @@ public class MenuGenerator {
         System.out.println("s -> CONTINUAR ");
         System.out.println("n -> SALIR");
         Scanner sc = new Scanner(System.in);
-        char userOption = sc.nextLine().charAt(0);
+        char userOption = sc.nextLine().toLowerCase().charAt(0);
         if (userOption != 's') {
             return true;
         }

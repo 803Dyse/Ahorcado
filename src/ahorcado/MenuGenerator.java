@@ -62,7 +62,7 @@ public class MenuGenerator {
     }
 
     /**
-     *
+     * Este es el metodo main
      * @param args
      */
     public static void main(String[] args) {

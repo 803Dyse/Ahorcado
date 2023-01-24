@@ -6,6 +6,11 @@ package ahorcado;
 
 /**
  *
+ * Esta clase implementa todo o estado dunha partida ao aforcado. Manterá unha
+ * referencia a un obxecto da clase HiddenWord coa palabra oculta a adiviñar, e
+ * tamén irá almacenando as letras introducidas polo usuario que non estean na
+ * palabra, para irllas mostrando e que non as introduza de novo
+ *
  * @author Bilo Alejandro Martins González y Raúl Parada de la Fuente
  */
 public class HiddenWord {

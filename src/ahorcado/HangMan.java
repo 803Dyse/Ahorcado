@@ -13,7 +13,8 @@ import java.util.ArrayList;
  * tamén irá almacenando as letras introducidas polo usuario que non estean na
  * palabra, para irllas mostrando e que non as introduza de novo
  *
- * @author Bilo Alejandro Martins González y Raúl Parada de la Fuente
+ * @author Alejandro Martínez Domínguez, Bilo Alejandro Martins González y Raúl
+ * Parada de la Fuente
  */
 public class HangMan {
 

@@ -10,7 +10,8 @@ import java.util.Random;
  *
  * Esta clase encárgase de xerar a palabra a adiviñar
  *
- * @author Bilo Alejandro Martins González y Raúl Parada de la Fuente
+ * @author Alejandro Martínez Domínguez, Bilo Alejandro Martins González y Raúl
+ * Parada de la Fuente
  */
 public class WordGenerator {
 

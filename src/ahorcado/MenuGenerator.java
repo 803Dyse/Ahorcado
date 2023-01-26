@@ -10,7 +10,8 @@ import java.util.Scanner;
  * 
  * Esta clase encárgase de mostrar os menús coas distintas opcións do xogo, e recoller o que introduza o usuario
  * 
- * @author Bilo Alejandro Martins González y Raúl Parada de la Fuente
+ * @author Alejandro Martínez Domínguez, Bilo Alejandro Martins González y Raúl
+ * Parada de la Fuente
  */
 public class MenuGenerator {
 

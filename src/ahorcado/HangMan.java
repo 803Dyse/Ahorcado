@@ -119,13 +119,14 @@ public class HangMan {
 
     /**
      *
-     * Comproba se se chegou ao límite de fallos permitidos
+     * Comprobase se chegou ao límite de fallos permitidos
      *
      * @return Devolve true o false
      */
     public boolean maxFailsExceeded() {
         if (fails.size() >= MAX_FAILS) {
             fails.clear();
+            System.out.println("Non te quedan intentos");
             return true;
         } else {
             return false;

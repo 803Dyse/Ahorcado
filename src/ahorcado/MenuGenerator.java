@@ -7,9 +7,10 @@ package ahorcado;
 import java.util.Scanner;
 
 /**
- * 
- * Esta clase encárgase de mostrar os menús coas distintas opcións do xogo, e recoller o que introduza o usuario
- * 
+ *
+ * Esta clase encárgase de mostrar os menús coas distintas opcións do xogo, e
+ * recoller o que introduza o usuario
+ *
  * @author Alejandro Martínez Domínguez, Bilo Alejandro Martins González y Raúl
  * Parada de la Fuente
  */
@@ -30,14 +31,15 @@ public class MenuGenerator {
     }
 
     /**
-     * Este metodo implementa el status del juego, los fallos, aciertos y
-     * tambien permite una cantidad limitada de fallos mientras pide las letras
+     * Este metodo implementa o status do xogo, os fallos, acertos e tamén
+     * permite unha cantidade limitada de fallos mentras pide as letras
      */
     private void showGameMenu() {
-        System.out.println("Bienvenido al juego del ahorcado");
+        System.out.println("Bienvenido ao xogo do ahorcado");
         Scanner scan = new Scanner(System.in);
         while (!hangMan.isGameOver()) {
-            System.out.println("Introduce una letra y intenta adivinar la palabra:");
+            System.out.println("Tes 6 intentos para adivinar a palabra");
+            System.out.println("Introduce unha letra e intenta adivinar a palabra:");
             char letter = scan.nextLine().toLowerCase().charAt(0);
             hangMan.tryChar(letter);
             System.out.println("Estos son os fallos: " + hangMan.getStringFails());
@@ -47,23 +49,24 @@ public class MenuGenerator {
     }
 
     /**
-     * Este metodo pregunta al usuario si quiere seguir jugando o no
+     * Este metodo pregunta ao usuario se quere seguir xogando o non
      */
     private boolean showExitMenu() {
-        System.out.println("quieres seguir jugando?");
+        System.out.println("Queres seguir xogando?");
         System.out.println("s -> CONTINUAR ");
         System.out.println("n -> SALIR");
         Scanner sc = new Scanner(System.in);
         char userOption = sc.nextLine().toLowerCase().charAt(0);
         if (userOption != 's') {
-            System.out.println("Muchas gracias por jugar al ahorcado :)");
+            System.out.println("Moitas grazas por xogar ao ahorcado :)");
             return true;
         }
         return false;
     }
 
     /**
-     * Este es el metodo main
+     * Este é o metodo main
+     *
      * @param args
      */
     public static void main(String[] args) {

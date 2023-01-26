@@ -21,11 +21,16 @@ public class WordGenerator {
      */
     public static final String[] WORDLIST = {"patacas", "bateria", "cacao", "luna", "java"};
 
+    /**
+     * Xenera unha palabra cun número random que escolle a posición da palabra
+     * no array
+     *
+     * @return A palabra xenerada
+     */
     public String generateWord() {
         Random randomWord = new Random();
         int numberGenerated = randomWord.nextInt(WORDLIST.length);
         String wordGenerated = WORDLIST[numberGenerated];
-        System.out.println("Depuracion: " + wordGenerated);
         return wordGenerated;
     }
 }

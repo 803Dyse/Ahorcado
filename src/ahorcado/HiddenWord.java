@@ -16,7 +16,14 @@ package ahorcado;
  */
 public class HiddenWord {
 
+    /**
+     * É un array de caracteres que almacena os caracteres da palabra
+     */
     private char[] characters;
+    /**
+     * Array de booleans que marcarán con true aqueles caracteres da palabra que
+     * están acertados e con false os que aínda non o están
+     */
     private boolean[] hits;
 
     /**
@@ -86,7 +93,7 @@ public class HiddenWord {
     /**
      *
      * Este método permitiranos saber se o usuario adiviñou a palabra e polo
-     * tanto gañou a a partida
+     * tanto gañou a partida
      *
      * @return Indica se a palabra é totalmente visible, é dicir, se todos os
      * caracteres están xa acertados
@@ -98,6 +105,7 @@ public class HiddenWord {
             }
         }
 
+        System.out.println("Adivinou a palabra");
         return true;
     }
 }

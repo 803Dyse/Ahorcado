@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ahorcado;
 
 import java.util.Scanner;
@@ -25,8 +21,8 @@ public class MenuGenerator {
      * Mostra por pantalla o menú principal e xenera a palabra que o usuario vai
      * adiviñar
      */
-    private String showInitMenu() {
-        WordGenerator word = new WordGenerator();
+    private String showInitMenu() throws GenerateWordException{
+        ArrayWordGenerator word = new ArrayWordGenerator();
         return word.generateWord();
     }
 
@@ -69,7 +65,7 @@ public class MenuGenerator {
      *
      * @param args
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws GenerateWordException{
         MenuGenerator menuGenerator = new MenuGenerator();
 
         do {

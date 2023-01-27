@@ -1,5 +1,6 @@
-package ahorcado;
+package ui;
 
+import model.HangMan;
 import java.util.Scanner;
 
 /**
@@ -22,8 +23,19 @@ public class MenuGenerator {
      * adiviñar
      */
     private String showInitMenu() throws GenerateWordException{
-        ArrayWordGenerator word = new ArrayWordGenerator();
-        return word.generateWord();
+        System.out.println("Selecciona o modo de xogo:");
+        System.out.println("1. Palabra aleatoria. \t 2. Palabra personalizada.");
+        Scanner scan = new Scanner(System.in);
+        int select = scan.nextInt();
+        switch(select){
+            case 1:
+                ArrayWordGenerator rword = new ArrayWordGenerator();
+                return rword.generateWord();
+            case 2:
+                KeyboardWordGenerator kword = new KeyboardWordGenerator();
+                return kword.generateWord();
+        }
+        return null;
     }
 
     /**

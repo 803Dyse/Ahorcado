@@ -1,4 +1,4 @@
-package ahorcado;
+package ui;
 
 import java.util.Random;
 
@@ -9,7 +9,7 @@ import java.util.Random;
  * @author Alejandro Martínez Domínguez, Bilo Alejandro Martins González y Raúl
  * Parada de la Fuente
  */
-public class ArrayWordGenerator {
+public class ArrayWordGenerator implements WordGenerator{
 
     /**
      * Array de string que é a lista de palabras posibles entre as que escoller
@@ -22,12 +22,20 @@ public class ArrayWordGenerator {
      * no array
      *
      * @return A palabra xenerada
-     * @throws ahorcado.GenerateWordException
+     * @throws ui.GenerateWordException
      */
+    @Override
     public String generateWord() throws GenerateWordException{
+        
+        String wordGenerated = "";
+        
+        try{
         Random randomWord = new Random();
         int numberGenerated = randomWord.nextInt(WORDLIST.length);
-        String wordGenerated = WORDLIST[numberGenerated];
+        wordGenerated = WORDLIST[numberGenerated];
+        }catch(Exception e){
+            
+        }
         return wordGenerated;
     }
 }

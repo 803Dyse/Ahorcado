@@ -82,8 +82,8 @@ public class MenuGenerator {
 
         try{
         MenuGenerator menuGenerator = new MenuGenerator();
-
         do {
+            
             menuGenerator.hangMan = new HangMan(menuGenerator.showInitMenu());
             menuGenerator.showGameMenu();
         } while (!menuGenerator.showExitMenu());

@@ -19,8 +19,9 @@ public class MenuGenerator {
     private HangMan hangMan;
 
     /**
-     * Mostra por pantalla o menú principal e xenera a palabra que o usuario vai
-     * adiviñar
+     * Mostra por pantalla o menú principal e chama ao método generateWord da
+     * súa respectiva clase para xerar unha palabra "aleatoria", ou definila
+     * manualmente.
      */
     private String showInitMenu() throws GenerateWordException {
         System.out.println("Selecciona o modo de xogo:");

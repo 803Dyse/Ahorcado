@@ -29,13 +29,11 @@ public class ArrayWordGenerator implements WordGenerator{
         
         String wordGenerated = "";
         
-        try{
+        
         Random randomWord = new Random();
         int numberGenerated = randomWord.nextInt(WORDLIST.length);
         wordGenerated = WORDLIST[numberGenerated];
-        }catch(Exception e){
-            
-        }
+        
         return wordGenerated;
     }
 }

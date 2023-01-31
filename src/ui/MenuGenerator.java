@@ -22,12 +22,12 @@ public class MenuGenerator {
      * Mostra por pantalla o menú principal e xenera a palabra que o usuario vai
      * adiviñar
      */
-    private String showInitMenu() throws GenerateWordException{
+    private String showInitMenu() throws GenerateWordException {
         System.out.println("Selecciona o modo de xogo:");
         System.out.println("1. Palabra aleatoria. \t 2. Palabra personalizada.");
         Scanner scan = new Scanner(System.in);
         int select = scan.nextInt();
-        switch(select){
+        switch (select) {
             case 1:
                 ArrayWordGenerator rword = new ArrayWordGenerator();
                 return rword.generateWord();
@@ -76,13 +76,23 @@ public class MenuGenerator {
      * Este é o metodo main
      *
      * @param args
+     * @throws ui.GenerateWordException
      */
-    public static void main(String[] args) throws GenerateWordException{
+    public static void main(String[] args) throws GenerateWordException {
+
+        try{
         MenuGenerator menuGenerator = new MenuGenerator();
 
         do {
             menuGenerator.hangMan = new HangMan(menuGenerator.showInitMenu());
             menuGenerator.showGameMenu();
         } while (!menuGenerator.showExitMenu());
+        }catch(GenerateWordException e){
+            if(e.isVisible()){
+                System.out.println("Error");
+            }
+        }
+
     }
+
 }

@@ -9,7 +9,7 @@ import java.util.Random;
  * @author Alejandro Martínez Domínguez, Bilo Alejandro Martins González y Raúl
  * Parada de la Fuente
  */
-public class ArrayWordGenerator implements WordGenerator{
+public class ArrayWordGenerator implements WordGenerator {
 
     /**
      * Array de string que é a lista de palabras posibles entre as que escoller
@@ -25,15 +25,13 @@ public class ArrayWordGenerator implements WordGenerator{
      * @throws ui.GenerateWordException
      */
     @Override
-    public String generateWord() throws GenerateWordException{
-        
-        String wordGenerated = "";
-        
-        
+    public String generateWord() throws GenerateWordException {
+        String wordGenerated;
+
         Random randomWord = new Random();
         int numberGenerated = randomWord.nextInt(WORDLIST.length);
         wordGenerated = WORDLIST[numberGenerated];
-        
+
         return wordGenerated;
     }
 }

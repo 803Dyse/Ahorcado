@@ -11,6 +11,13 @@ package ui;
  */
 public class KeyboardWordGenerator implements WordGenerator {
 
+    /**
+     * Este método permite que o usuario introduzca unha palabra que non se
+     * mostra na terminal e sexa a palabra xenerada
+     *
+     * @return Devolve a palabra xenerada
+     * @throws GenerateWordException Cando a palabra non se pode obter
+     */
     @Override
     public String generateWord() throws GenerateWordException {
         String customWord;
@@ -19,7 +26,7 @@ public class KeyboardWordGenerator implements WordGenerator {
         char[] ch = System.console().readPassword();
 
         // En customWord transformase o array de chars "ch" nun String
-        customWord = String.valueOf(ch);
+        customWord = String.valueOf(ch).toLowerCase();
 
         return customWord;
     }

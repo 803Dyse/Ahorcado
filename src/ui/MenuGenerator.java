@@ -19,9 +19,9 @@ public class MenuGenerator {
     private HangMan hangMan;
 
     /**
-     * Mostra por pantalla o menú principal e chama ao método generateWord da
-     * súa respectiva clase para xerar unha palabra "aleatoria", ou definila
-     * manualmente.
+     * Este método mostra por pantalla o menú principal e chama ao método
+     * generateWord da súa respectiva clase para xerar unha palabra "aleatoria",
+     * ou definila manualmente
      */
     private String showInitMenu() throws GenerateWordException {
         System.out.println("Selecciona o modo de xogo:");
@@ -30,17 +30,17 @@ public class MenuGenerator {
         int select = scan.nextInt();
         switch (select) {
             case 1:
-                ArrayWordGenerator rword = new ArrayWordGenerator();
-                return rword.generateWord();
+                ArrayWordGenerator randomWord = new ArrayWordGenerator();
+                return randomWord.generateWord();
             case 2:
-                KeyboardWordGenerator kword = new KeyboardWordGenerator();
-                return kword.generateWord();
+                KeyboardWordGenerator keyboardWord = new KeyboardWordGenerator();
+                return keyboardWord.generateWord();
         }
         return null;
     }
 
     /**
-     * Este metodo implementa o status do xogo, os fallos, acertos e tamén
+     * Este método implementa o status do xogo, os fallos, acertos e tamén
      * permite unha cantidade limitada de fallos mentras pide as letras
      */
     private void showGameMenu() {
@@ -58,7 +58,7 @@ public class MenuGenerator {
     }
 
     /**
-     * Este metodo pregunta ao usuario se quere seguir xogando o non
+     * Este método pregunta ao usuario se quere seguir xogando o non
      */
     private boolean showExitMenu() {
         System.out.println("Queres seguir xogando?");
@@ -76,20 +76,20 @@ public class MenuGenerator {
     /**
      * Este é o metodo main
      *
-     * @param args
-     * @throws ui.GenerateWordException
+     * @param args the command line arguments
+     * @throws ui.GenerateWordException Cando a palabra non se pode obter
      */
     public static void main(String[] args) throws GenerateWordException {
 
-        try{
-        MenuGenerator menuGenerator = new MenuGenerator();
-        do {
-            
-            menuGenerator.hangMan = new HangMan(menuGenerator.showInitMenu());
-            menuGenerator.showGameMenu();
-        } while (!menuGenerator.showExitMenu());
-        }catch(GenerateWordException e){
-            if(e.isVisible()){
+        try {
+            MenuGenerator menuGenerator = new MenuGenerator();
+            do {
+
+                menuGenerator.hangMan = new HangMan(menuGenerator.showInitMenu());
+                menuGenerator.showGameMenu();
+            } while (!menuGenerator.showExitMenu());
+        } catch (GenerateWordException e) {
+            if (e.isVisible()) {
                 System.out.println("Error");
             }
         }

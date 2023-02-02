@@ -10,19 +10,21 @@ package ui;
 public class GenerateWordException extends Exception {
 
     /**
-     * 
+     * Fai visible o non o mensaxe de excepción
      */
     private boolean visible;
 
     /**
+     * Este método obtén o valor da variable visible
      * 
-     * @return 
+     * @return Devolve o valor da variable visible
      */
     public boolean isVisible() {
         return visible;
     }
 
     /**
+     * Este método modifica o valor da variable visible
      * 
      * @param visible 
      */

@@ -9,9 +9,10 @@ package ui;
 public interface WordGenerator {
     
     /**
+     * Este método é definido
      * 
-     * @return
-     * @throws GenerateWordException 
+     * @return Devolve un String
+     * @throws GenerateWordException Cando a palabra non se pode obter 
      */
     public String generateWord() throws GenerateWordException;
     

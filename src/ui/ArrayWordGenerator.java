@@ -21,8 +21,8 @@ public class ArrayWordGenerator implements WordGenerator {
      * Xenera unha palabra cun número random que escolle a posición da palabra
      * no array
      *
-     * @return A palabra xenerada
-     * @throws ui.GenerateWordException
+     * @return Devolve a palabra xenerada
+     * @throws ui.GenerateWordException Cando a palabra non se pode obter
      */
     @Override
     public String generateWord() throws GenerateWordException {

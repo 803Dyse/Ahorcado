@@ -26,16 +26,17 @@ public class GenerateWordException extends Exception {
     /**
      * Este método modifica o valor da variable visible
      * 
-     * @param visible 
+     * @param visible modifica o valor da variable visible
      */
     public void setVisible(boolean visible) {
         this.visible = visible;
     }
 
     /**
+     * Constructor da clase GenerateWordException
      * 
-     * @param message
-     * @param visible 
+     * @param message o mensaje
+     * @param visible se é visible o mensaje
      */
     public GenerateWordException(String message, boolean visible) {
         this.visible = visible;

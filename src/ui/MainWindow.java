@@ -8,15 +8,14 @@ import model.HangMan;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author Alejandro Martínez Domínguez
  */
 public class MainWindow extends javax.swing.JFrame {
-    
+
     private HangMan hangMan;
-    
+
     private String currentWord;
 
     /**
@@ -167,27 +166,30 @@ public class MainWindow extends javax.swing.JFrame {
     private void newGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameButtonActionPerformed
 
         String[] options = {"Un xogador, xerando a palabra ao azar", "Dous xogadores, escribindo unha palabra personalizada"};
-        
-        Object game = JOptionPane.showInputDialog(this,"Selecciona un modo de xogo:", "Elegir",JOptionPane.QUESTION_MESSAGE,null,options, null);
-        
-        MainWindow mainWindow = new MainWindow();
-        
-        try{
-        if(game.equals(options[0])){
-            ArrayWordGenerator randomWord = new ArrayWordGenerator();
-            currentWord = randomWord.generateWord();
-        } else if(game.equals(options[1])){
-            KeyboardWordGenerator keyboardWord = new KeyboardWordGenerator();
-            currentWord = keyboardWord.generateWord();
-        }
 
-        }catch(GenerateWordException e){
+        Object game = JOptionPane.showInputDialog(this, "Selecciona un modo de xogo:", "Elegir", JOptionPane.QUESTION_MESSAGE, null, options, null);
+
+        MainWindow mainWindow = new MainWindow();
+
+        try {
+            if (options[0].equals(game)) {
+                ArrayWordGenerator randomWord = new ArrayWordGenerator();
+                // Es necesario el mainWindow
+                mainWindow.currentWord = randomWord.generateWord();
+                mainWindow.hangMan = new HangMan(mainWindow.currentWord);
+            } else if (options[1].equals(game)) {
+                KeyboardWordGenerator keyboardWord = new KeyboardWordGenerator();
+                // Es necesario el mainWindow
+                mainWindow.currentWord = keyboardWord.generateWord();
+                mainWindow.hangMan = new HangMan(mainWindow.currentWord);
+            }
+        } catch (GenerateWordException e) {
             System.out.println("error");
         }
-        
+
         mainWindow.showGameMenu();
-        
-        
+
+
     }//GEN-LAST:event_newGameButtonActionPerformed
 
     /**
@@ -223,10 +225,9 @@ public class MainWindow extends javax.swing.JFrame {
                 new MainWindow().setVisible(true);
             }
         });
-        
-        
+
     }
-    
+
     /**
      * Este método implementa o status do xogo, os fallos, acertos e tamén
      * permite unha cantidade limitada de fallos mentras pide as letras
@@ -260,8 +261,7 @@ public class MainWindow extends javax.swing.JFrame {
         }
         return false;
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exitButton;

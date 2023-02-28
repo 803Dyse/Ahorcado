@@ -237,8 +237,11 @@ public class MainWindow extends javax.swing.JFrame {
         
         char letter[] = introducedLetter.getText().toCharArray();
         
-        hangMan.tryChar(letter[0]);
+        char firstLetter = Character.toLowerCase(letter[0]);
         
+        //hangMan.tryChar(firstLetter);
+        
+        System.out.println("DEBUG!!! LETRA INTRODUCIDA: " + firstLetter);
     }
     
     /**

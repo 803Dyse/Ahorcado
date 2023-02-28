@@ -183,7 +183,10 @@ public class MainWindow extends javax.swing.JFrame {
         
         try{
          if (options[0].equals(game)) {
+             
                 ArrayWordGenerator randomWord = new ArrayWordGenerator();
+                
+                randomWord.generateWord();
                 
             } else if (options[1].equals(game)) {
                 

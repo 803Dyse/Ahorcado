@@ -31,6 +31,8 @@ public class ArrayWordGenerator implements WordGenerator {
         Random randomWord = new Random();
         int numberGenerated = randomWord.nextInt(WORDLIST.length);
         wordGenerated = WORDLIST[numberGenerated];
+        
+        System.out.println("DEBUG!!! PALABRA = " + wordGenerated);
 
         return wordGenerated;
     }

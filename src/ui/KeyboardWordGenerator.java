@@ -31,9 +31,10 @@ public class KeyboardWordGenerator implements WordGenerator {
 
         String word = JOptionPane.showInputDialog(pwd ,"Palabra", customWord);
 
-        // En customWord transformase o array de chars "ch" nun String
         customWord = String.valueOf(word).toLowerCase();
-        System.out.println(customWord);
+        
+        System.out.println("DEBUG!!! PALABRA = " + customWord);
+        
         return customWord;
     }
     

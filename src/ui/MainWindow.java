@@ -7,7 +7,8 @@ package ui;
 import javax.swing.ImageIcon;
 import model.HangMan;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;;
+import javax.swing.JOptionPane;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -25,7 +26,7 @@ public class MainWindow extends javax.swing.JFrame {
     public MainWindow() {
         initComponents();
         hangManLabels = new JLabel[hangMan.MAX_FAILS];
-        
+
     }
 
     /**
@@ -77,13 +78,18 @@ public class MainWindow extends javax.swing.JFrame {
         letterText.setText("Introduce unha letra:");
 
         introducedLetter.setEnabled(false);
+        introducedLetter.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                introducedLetterKeyPressed(evt);
+            }
+        });
 
         hangmanImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Hangman-0.png"))); // NOI18N
 
         tryLetterButton.setText("Probar");
-        tryLetterButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tryLetterButtonActionPerformed(evt);
+        tryLetterButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tryLetterButtonMouseClicked(evt);
             }
         });
 
@@ -183,9 +189,15 @@ public class MainWindow extends javax.swing.JFrame {
 
     }//GEN-LAST:event_newGameButtonActionPerformed
 
-    private void tryLetterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tryLetterButtonActionPerformed
+    private void introducedLetterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_introducedLetterKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            tryChar();
+        }
+    }//GEN-LAST:event_introducedLetterKeyPressed
+
+    private void tryLetterButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tryLetterButtonMouseClicked
         tryChar();
-    }//GEN-LAST:event_tryLetterButtonActionPerformed
+    }//GEN-LAST:event_tryLetterButtonMouseClicked
 
     /**
      * Comeza unha nova partida, escollendo un modo de xogo e mostrando o estado
@@ -197,8 +209,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         Object game = JOptionPane.showInputDialog(this, "Selecciona un modo de xogo:", "Elegir", JOptionPane.QUESTION_MESSAGE, null, options, null);
 
-        String word ="";
-        
+        String word = "";
+
         try {
             if (options[0].equals(game)) {
 
@@ -208,13 +220,12 @@ public class MainWindow extends javax.swing.JFrame {
 
             } else if (options[1].equals(game)) {
 
-                // DE MOMENTO NO SE COMPRUEBA NADA, SIMPLEMENTE SE ABRE
-                // UN DIÁLOGO PARA INTRODUCIR LA PALABRA, NI SE OCULTA
-                // NI NA PERO FUNCIONA
-                KeyboardWordGenerator keyboardWord = new KeyboardWordGenerator();
+                GUIKeyboardWordGenerator keyboardWord = new GUIKeyboardWordGenerator();
 
                 word = keyboardWord.generateWord();
             }
+            
+            hangmanImage.setIcon(new ImageIcon("src/img/Hangman-0.png"));
 
             hangMan = new HangMan(word);
 
@@ -233,26 +244,39 @@ public class MainWindow extends javax.swing.JFrame {
     private void showGameStatus() {
 
         failedLetters.setText(hangMan.getStringFails());
-            
+
         wordField.setText(hangMan.showHiddenWord());
-        
+
         introducedLetter.setText("");
-        
-        switch(hangMan.getFails().size()){
-            case 1: hangmanImage.setIcon(new ImageIcon("src/img/Hangman-1.png"));
-                    break;
-            case 2: hangmanImage.setIcon(new ImageIcon("src/img/Hangman-2.png"));
-                    break;
-            case 3: hangmanImage.setIcon(new ImageIcon("src/img/Hangman-3.png"));
-                    break;
-            case 4: hangmanImage.setIcon(new ImageIcon("src/img/Hangman-4.png"));
-                    break;
-            case 5: hangmanImage.setIcon(new ImageIcon("src/img/Hangman-5.png"));
-                    break;
-            case 6: hangmanImage.setIcon(new ImageIcon("src/img/Hangman-6.png"));
-                    break;
+
+        switch (hangMan.getFails().size()) {
+            case 1:
+                hangmanImage.setIcon(new ImageIcon("src/img/Hangman-1.png"));
+                break;
+            case 2:
+                hangmanImage.setIcon(new ImageIcon("src/img/Hangman-2.png"));
+                break;
+            case 3:
+                hangmanImage.setIcon(new ImageIcon("src/img/Hangman-3.png"));
+                break;
+            case 4:
+                hangmanImage.setIcon(new ImageIcon("src/img/Hangman-4.png"));
+                break;
+            case 5:
+                hangmanImage.setIcon(new ImageIcon("src/img/Hangman-5.png"));
+                break;
+            case 6:
+                hangmanImage.setIcon(new ImageIcon("src/img/Hangman-6.png"));
+                break;
         }
-            
+
+        if (hangMan.isGameOver()) {
+            hangmanImage.setIcon(new ImageIcon("src/img/Hangman-6.png"));
+            JOptionPane.showMessageDialog(rootPane, "Fin do xogo. Quedaches aforcado!! A palabra oculta era " + hangMan.showFullWord(), "Game Over", HEIGHT);
+            wordField.setText("");
+            failedLetters.setText("");
+        }
+
     }
 
     /**
@@ -261,22 +285,22 @@ public class MainWindow extends javax.swing.JFrame {
      */
     private void tryChar() {
 
-        if (hangMan.getFails().size()!=5) {
+        if (!hangMan.isGameOver()) {
 
             char letter[] = introducedLetter.getText().toCharArray();
 
             char firstLetter = Character.toLowerCase(letter[0]);
 
-            hangMan.tryChar(firstLetter);
-            
-            showGameStatus();
+            if((firstLetter>='a' && firstLetter<='z')){
+                hangMan.tryChar(firstLetter);
+                showGameStatus();
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "El caracter debe ser del abecedario (a-z).", "Error", HEIGHT);
+                System.out.println("LO ISISTE MAL IJO");
+            }
 
             System.out.println("DEBUG!!! LETRA INTRODUCIDA: " + firstLetter);
-            
-        } else{
-            
-            System.out.println("A solucion e: " + hangMan.showFullWord());
-            hangmanImage.setIcon(new ImageIcon("src/img/Hangman-6.png"));
+
         }
     }
 

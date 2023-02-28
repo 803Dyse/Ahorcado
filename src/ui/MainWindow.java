@@ -6,6 +6,7 @@ package ui;
 
 import model.HangMan;
 import java.util.Scanner;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,13 +17,14 @@ public class MainWindow extends javax.swing.JFrame {
 
     private HangMan hangMan;
 
-    private String currentWord;
+    private JLabel hangManLabels[];
 
     /**
      * Creates new form MainWindow
      */
     public MainWindow() {
         initComponents();
+        hangManLabels = new JLabel[hangMan.MAX_FAILS];
     }
 
     /**
@@ -160,38 +162,61 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void newGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameButtonActionPerformed
 
+        startNewGame();
+        
+    }//GEN-LAST:event_newGameButtonActionPerformed
+
+    /**
+     * Comeza unha nova partida, escollendo un modo de xogo e mostrando 
+     * o estado inicial.
+     */
+    private void startNewGame(){
+        
         String[] options = {"Un xogador, xerando a palabra ao azar", "Dous xogadores, escribindo unha palabra personalizada"};
 
         Object game = JOptionPane.showInputDialog(this, "Selecciona un modo de xogo:", "Elegir", JOptionPane.QUESTION_MESSAGE, null, options, null);
-
-        MainWindow mainWindow = new MainWindow();
-
-        try {
-            if (options[0].equals(game)) {
+        
+        try{
+         if (options[0].equals(game)) {
                 ArrayWordGenerator randomWord = new ArrayWordGenerator();
-                // Es necesario el mainWindow
-                mainWindow.currentWord = randomWord.generateWord();
-                mainWindow.hangMan = new HangMan(mainWindow.currentWord);
+                
             } else if (options[1].equals(game)) {
+                
+                // DE MOMENTO NO SE COMPRUEBA NADA, SIMPLEMENTE SE ABRE
+                // UN DIÁLOGO PARA INTRODUCIR LA PALABRA, NI SE OCULTA
+                // NI NA PERO FUNCIONA
+                
                 KeyboardWordGenerator keyboardWord = new KeyboardWordGenerator();
-                // Es necesario el mainWindow
-                mainWindow.currentWord = keyboardWord.generateWord();
-                mainWindow.hangMan = new HangMan(mainWindow.currentWord);
+                
+                keyboardWord.generateWord();
             }
-        } catch (GenerateWordException e) {
-            System.out.println("error");
+        }catch(GenerateWordException e){
+            System.out.println("ERROR");
         }
-
-        mainWindow.showGameMenu();
-
-
-    }//GEN-LAST:event_newGameButtonActionPerformed
-
+        
+    }
+    
+    /**
+     * Mostra o estado da partida co estado da palabra oculta, letras falladas 
+     * e estado do aforcado
+     */
+    private void showGameStatus(){
+        
+    }
+    
+    /**
+     * Proba se o caracter introducido na caixa de texto está na palabra oculta 
+     * e mostra o novo estado do xogo
+     */
+    private void tryChar(){
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -226,40 +251,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-    }
-
-    /**
-     * Este método implementa o status do xogo, os fallos, acertos e tamén
-     * permite unha cantidade limitada de fallos mentras pide as letras
-     */
-    private void showGameMenu() {
-        System.out.println("Bienvenido ao xogo do ahorcado");
-        Scanner scan = new Scanner(System.in);
-        while (!hangMan.isGameOver()) {
-            System.out.println("Tes 6 intentos para adivinar a palabra");
-            System.out.println("Introduce unha letra e intenta adivinar a palabra:");
-            char letter = scan.nextLine().toLowerCase().charAt(0);
-            hangMan.tryChar(letter);
-            System.out.println("Estos son os fallos: " + hangMan.getStringFails());
-            System.out.println(hangMan.showHiddenWord());
-        }
-        System.out.println("A solucion e: " + hangMan.showFullWord());
-    }
-
-    /**
-     * Este método pregunta ao usuario se quere seguir xogando o non
-     */
-    private boolean showExitMenu() {
-        System.out.println("Queres seguir xogando?");
-        System.out.println("s -> CONTINUAR ");
-        System.out.println("n -> SALIR");
-        Scanner sc = new Scanner(System.in);
-        char userOption = sc.nextLine().toLowerCase().charAt(0);
-        if (userOption != 's') {
-            System.out.println("Moitas grazas por xogar ao ahorcado :)");
-            return true;
-        }
-        return false;
     }
 
 

@@ -1,5 +1,9 @@
 package ui;
 
+import static java.awt.image.ImageObserver.HEIGHT;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+
 /**
  * Esta clase ten un método que devolve unha palabra creada polo xogador para
  * adiviñar no xogo, utilízase un readPassword para que o escrito non se vexa na
@@ -20,15 +24,17 @@ public class KeyboardWordGenerator implements WordGenerator {
      */
     @Override
     public String generateWord() throws GenerateWordException {
-        String customWord;
+        
+        JPasswordField pwd = new JPasswordField();
+        
+        String customWord = "";
 
-        // Texto introducido invisible que se garda nun array de char
-        char[] ch = System.console().readPassword();
+        String word = JOptionPane.showInputDialog(pwd ,"Palabra", customWord);
 
         // En customWord transformase o array de chars "ch" nun String
-        customWord = String.valueOf(ch).toLowerCase();
-
+        customWord = String.valueOf(word).toLowerCase();
+        System.out.println(customWord);
         return customWord;
     }
-
+    
 }

@@ -4,9 +4,10 @@
  */
 package ui;
 
+import javax.swing.ImageIcon;
 import model.HangMan;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import javax.swing.JOptionPane;;
 
 /**
  *
@@ -192,7 +193,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         Object game = JOptionPane.showInputDialog(this, "Selecciona un modo de xogo:", "Elegir", JOptionPane.QUESTION_MESSAGE, null, options, null);
 
-        String word = "";
+        String word ="";
         
         try {
             if (options[0].equals(game)) {
@@ -227,6 +228,19 @@ public class MainWindow extends javax.swing.JFrame {
      */
     private void showGameStatus() {
 
+        failedLetters.setText(hangMan.getStringFails());
+            
+        wordField.setText(hangMan.showHiddenWord());
+        
+        switch(hangMan.getFails().size()){
+            case 1: hangmanImage.setIcon(new ImageIcon("img/Hangman-0.png"));
+            case 2: hangmanImage.setIcon(new ImageIcon("img/Hangman-1.png"));
+            case 3: hangmanImage.setIcon(new ImageIcon("img/Hangman-2.png"));
+            case 4: hangmanImage.setIcon(new ImageIcon("img/Hangman-3.png"));
+            case 5: hangmanImage.setIcon(new ImageIcon("img/Hangman-4.png"));
+            case 6: hangmanImage.setIcon(new ImageIcon("img/Hangman-5.png"));
+        }
+            
     }
 
     /**
@@ -235,7 +249,7 @@ public class MainWindow extends javax.swing.JFrame {
      */
     private void tryChar() {
 
-        while (!hangMan.isGameOver()) {
+        if (!hangMan.isGameOver()) {
 
             char letter[] = introducedLetter.getText().toCharArray();
 
@@ -243,11 +257,11 @@ public class MainWindow extends javax.swing.JFrame {
 
             hangMan.tryChar(firstLetter);
             
-            failedLetters.setText(hangMan.getStringFails());
-            
-            wordField.setText(hangMan.showHiddenWord());
+            showGameStatus();
 
             System.out.println("DEBUG!!! LETRA INTRODUCIDA: " + firstLetter);
+        } else{
+            System.out.println("A solucion e: " + hangMan.showFullWord());
         }
     }
 

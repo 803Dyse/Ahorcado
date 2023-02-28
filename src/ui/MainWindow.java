@@ -24,6 +24,7 @@ public class MainWindow extends javax.swing.JFrame {
     public MainWindow() {
         initComponents();
         hangManLabels = new JLabel[hangMan.MAX_FAILS];
+        
     }
 
     /**
@@ -172,7 +173,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void newGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameButtonActionPerformed
 
         startNewGame(); // Comeza o xogo
-        
+
         introducedLetter.enable(); // Habilita o cadro para introducir letras
 
     }//GEN-LAST:event_newGameButtonActionPerformed
@@ -182,68 +183,74 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_tryLetterButtonActionPerformed
 
     /**
-     * Comeza unha nova partida, escollendo un modo de xogo e mostrando 
-     * o estado inicial.
+     * Comeza unha nova partida, escollendo un modo de xogo e mostrando o estado
+     * inicial.
      */
-    private void startNewGame(){
-        
+    private void startNewGame() {
+
         String[] options = {"Un xogador, xerando a palabra ao azar", "Dous xogadores, escribindo unha palabra personalizada"};
 
         Object game = JOptionPane.showInputDialog(this, "Selecciona un modo de xogo:", "Elegir", JOptionPane.QUESTION_MESSAGE, null, options, null);
-        
+
         String word = "";
         
-        try{
-         if (options[0].equals(game)) {
-             
+        try {
+            if (options[0].equals(game)) {
+
                 ArrayWordGenerator randomWord = new ArrayWordGenerator();
 
                 word = randomWord.generateWord();
-                
+
             } else if (options[1].equals(game)) {
-                
+
                 // DE MOMENTO NO SE COMPRUEBA NADA, SIMPLEMENTE SE ABRE
                 // UN DIÁLOGO PARA INTRODUCIR LA PALABRA, NI SE OCULTA
                 // NI NA PERO FUNCIONA
-                
                 KeyboardWordGenerator keyboardWord = new KeyboardWordGenerator();
-                
+
                 word = keyboardWord.generateWord();
             }
-         
-         HangMan hangman = new HangMan(word);
-         
-         wordField.setText(hangman.showHiddenWord());
 
-        }catch(GenerateWordException e){
+            hangMan = new HangMan(word);
+
+            wordField.setText(hangMan.showHiddenWord());
+
+        } catch (GenerateWordException e) {
             System.out.println("ERROR");
         }
-        
+
     }
-    
+
     /**
-     * Mostra o estado da partida co estado da palabra oculta, letras falladas 
-     * e estado do aforcado
+     * Mostra o estado da partida co estado da palabra oculta, letras falladas e
+     * estado do aforcado
      */
-    private void showGameStatus(){
-        
+    private void showGameStatus() {
+
     }
-    
+
     /**
-     * Proba se o caracter introducido na caixa de texto está na palabra oculta 
+     * Proba se o caracter introducido na caixa de texto está na palabra oculta
      * e mostra o novo estado do xogo
      */
-    private void tryChar(){
-        
-        char letter[] = introducedLetter.getText().toCharArray();
-        
-        char firstLetter = Character.toLowerCase(letter[0]);
-        
-        //hangMan.tryChar(firstLetter);
-        
-        System.out.println("DEBUG!!! LETRA INTRODUCIDA: " + firstLetter);
+    private void tryChar() {
+
+        while (!hangMan.isGameOver()) {
+
+            char letter[] = introducedLetter.getText().toCharArray();
+
+            char firstLetter = Character.toLowerCase(letter[0]);
+
+            hangMan.tryChar(firstLetter);
+            
+            failedLetters.setText(hangMan.getStringFails());
+            
+            wordField.setText(hangMan.showHiddenWord());
+
+            System.out.println("DEBUG!!! LETRA INTRODUCIDA: " + firstLetter);
+        }
     }
-    
+
     /**
      * @param args the command line arguments
      */

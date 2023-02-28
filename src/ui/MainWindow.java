@@ -38,21 +38,134 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        defaultPanel = new javax.swing.JPanel();
-        newGameButton = new javax.swing.JButton();
-        exitButton = new javax.swing.JButton();
+        picturePanel = new javax.swing.JPanel();
+        hangmanImage = new javax.swing.JLabel();
+        titlePanel = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
+        gamePanel = new javax.swing.JPanel();
+        tryLetterButton = new javax.swing.JButton();
+        wordField = new javax.swing.JLabel();
+        failedLetters = new javax.swing.JLabel();
         wordTitle = new javax.swing.JLabel();
         failedText = new javax.swing.JLabel();
         letterText = new javax.swing.JLabel();
         introducedLetter = new javax.swing.JTextField();
-        hangmanImage = new javax.swing.JLabel();
-        tryLetterButton = new javax.swing.JButton();
-        wordField = new javax.swing.JLabel();
-        failedLetters = new javax.swing.JLabel();
+        playPanel = new javax.swing.JPanel();
+        newGameButton = new javax.swing.JButton();
+        exitButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("O aforcado");
+
+        hangmanImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Hangman-0.png"))); // NOI18N
+
+        javax.swing.GroupLayout picturePanelLayout = new javax.swing.GroupLayout(picturePanel);
+        picturePanel.setLayout(picturePanelLayout);
+        picturePanelLayout.setHorizontalGroup(
+            picturePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, picturePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(hangmanImage, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        picturePanelLayout.setVerticalGroup(
+            picturePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, picturePanelLayout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(hangmanImage, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        title.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        title.setText("O xogo do aforcado");
+
+        javax.swing.GroupLayout titlePanelLayout = new javax.swing.GroupLayout(titlePanel);
+        titlePanel.setLayout(titlePanelLayout);
+        titlePanelLayout.setHorizontalGroup(
+            titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(title)
+                .addContainerGap())
+        );
+        titlePanelLayout.setVerticalGroup(
+            titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(title)
+                .addContainerGap())
+        );
+
+        tryLetterButton.setText("Probar");
+        tryLetterButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tryLetterButtonMouseClicked(evt);
+            }
+        });
+
+        wordField.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+
+        failedLetters.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+
+        wordTitle.setText("Palabra a adiviñar:");
+
+        failedText.setText("Letras falladas:");
+
+        letterText.setText("Introduce unha letra:");
+
+        introducedLetter.setEnabled(false);
+        introducedLetter.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                introducedLetterKeyPressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout gamePanelLayout = new javax.swing.GroupLayout(gamePanel);
+        gamePanel.setLayout(gamePanelLayout);
+        gamePanelLayout.setHorizontalGroup(
+            gamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(gamePanelLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(gamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(wordTitle)
+                    .addComponent(failedText))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(gamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(wordField, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(failedLetters, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(gamePanelLayout.createSequentialGroup()
+                        .addComponent(introducedLetter, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tryLetterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 78, Short.MAX_VALUE))
+            .addGroup(gamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(gamePanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(letterText)
+                    .addContainerGap(215, Short.MAX_VALUE)))
+        );
+        gamePanelLayout.setVerticalGroup(
+            gamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gamePanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(gamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(wordField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(wordTitle, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(10, 10, 10)
+                .addGroup(gamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(failedText)
+                    .addComponent(failedLetters, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(gamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(introducedLetter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tryLetterButton))
+                .addGap(28, 28, 28))
+            .addGroup(gamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(gamePanelLayout.createSequentialGroup()
+                    .addGap(67, 67, 67)
+                    .addComponent(letterText)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
 
         newGameButton.setText("Nova partida");
         newGameButton.addActionListener(new java.awt.event.ActionListener() {
@@ -68,94 +181,22 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        title.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        title.setText("O xogo do aforcado");
-
-        wordTitle.setText("Palabra a adiviñar:");
-
-        failedText.setText("Letras falladas:");
-
-        letterText.setText("Introduce unha letra:");
-
-        introducedLetter.setEnabled(false);
-        introducedLetter.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                introducedLetterKeyPressed(evt);
-            }
-        });
-
-        hangmanImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Hangman-0.png"))); // NOI18N
-
-        tryLetterButton.setText("Probar");
-        tryLetterButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tryLetterButtonMouseClicked(evt);
-            }
-        });
-
-        wordField.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-
-        failedLetters.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-
-        javax.swing.GroupLayout defaultPanelLayout = new javax.swing.GroupLayout(defaultPanel);
-        defaultPanel.setLayout(defaultPanelLayout);
-        defaultPanelLayout.setHorizontalGroup(
-            defaultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(defaultPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout playPanelLayout = new javax.swing.GroupLayout(playPanel);
+        playPanel.setLayout(playPanelLayout);
+        playPanelLayout.setHorizontalGroup(
+            playPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(playPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(defaultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(letterText)
-                    .addGroup(defaultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(failedText)
-                        .addComponent(wordTitle)))
-                .addGap(1, 1, 1)
-                .addGroup(defaultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(defaultPanelLayout.createSequentialGroup()
-                        .addGroup(defaultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(defaultPanelLayout.createSequentialGroup()
-                                .addComponent(introducedLetter, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tryLetterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(defaultPanelLayout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addGroup(defaultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(failedLetters, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(wordField, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
-                        .addComponent(hangmanImage))
-                    .addComponent(title)
-                    .addGroup(defaultPanelLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(newGameButton)
-                        .addGap(30, 30, 30)
-                        .addComponent(exitButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(newGameButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(exitButton)
+                .addContainerGap())
         );
-        defaultPanelLayout.setVerticalGroup(
-            defaultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, defaultPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(title)
-                .addGroup(defaultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(defaultPanelLayout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addGroup(defaultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(wordTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(wordField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(defaultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(failedText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(failedLetters, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(defaultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(letterText)
-                            .addComponent(introducedLetter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tryLetterButton)))
-                    .addGroup(defaultPanelLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(hangmanImage, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addGroup(defaultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        playPanelLayout.setVerticalGroup(
+            playPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, playPanelLayout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addGroup(playPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newGameButton)
                     .addComponent(exitButton))
                 .addContainerGap())
@@ -166,16 +207,47 @@ public class MainWindow extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(defaultPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(gamePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(picturePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(playPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(237, 237, 237))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(defaultPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(gamePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(74, 74, 74))
+                    .addComponent(picturePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(playPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tryLetterButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tryLetterButtonMouseClicked
+        tryChar();
+    }//GEN-LAST:event_tryLetterButtonMouseClicked
+
+    private void introducedLetterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_introducedLetterKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            tryChar();
+        }
+    }//GEN-LAST:event_introducedLetterKeyPressed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         this.dispose();
@@ -186,18 +258,7 @@ public class MainWindow extends javax.swing.JFrame {
         startNewGame(); // Comeza o xogo
 
         introducedLetter.enable(); // Habilita o cadro para introducir letras
-
     }//GEN-LAST:event_newGameButtonActionPerformed
-
-    private void introducedLetterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_introducedLetterKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            tryChar();
-        }
-    }//GEN-LAST:event_introducedLetterKeyPressed
-
-    private void tryLetterButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tryLetterButtonMouseClicked
-        tryChar();
-    }//GEN-LAST:event_tryLetterButtonMouseClicked
 
     /**
      * Comeza unha nova partida, escollendo un modo de xogo e mostrando o estado
@@ -342,15 +403,18 @@ public class MainWindow extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel defaultPanel;
     private javax.swing.JButton exitButton;
     private javax.swing.JLabel failedLetters;
     private javax.swing.JLabel failedText;
+    private javax.swing.JPanel gamePanel;
     private javax.swing.JLabel hangmanImage;
     private javax.swing.JTextField introducedLetter;
     private javax.swing.JLabel letterText;
     private javax.swing.JButton newGameButton;
+    private javax.swing.JPanel picturePanel;
+    private javax.swing.JPanel playPanel;
     private javax.swing.JLabel title;
+    private javax.swing.JPanel titlePanel;
     private javax.swing.JButton tryLetterButton;
     private javax.swing.JLabel wordField;
     private javax.swing.JLabel wordTitle;

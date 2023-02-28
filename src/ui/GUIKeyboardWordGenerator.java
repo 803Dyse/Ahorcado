@@ -4,6 +4,7 @@
  */
 package ui;
 
+import static java.awt.image.ImageObserver.HEIGHT;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 
@@ -20,16 +21,17 @@ public class GUIKeyboardWordGenerator implements WordGenerator {
 
         String word;
 
-        do {
-            JPasswordField pwd = new JPasswordField();
+        JPasswordField pwd = new JPasswordField();
 
-            word = JOptionPane.showInputDialog(pwd, "Palabra", customWord);
-
-        } while (!isValid(word));
+        word = JOptionPane.showInputDialog(pwd, "Palabra", customWord);
 
         customWord = String.valueOf(word);
 
         System.out.println("DEBUG!!! PALABRA = " + customWord);
+
+        if (!isValid(word)) {
+            JOptionPane.showMessageDialog(null, "El caracter debe ser del abecedario (a-z).", "Error", HEIGHT);
+        }
 
         return customWord;
     }
@@ -43,8 +45,11 @@ public class GUIKeyboardWordGenerator implements WordGenerator {
     private boolean isValid(String word) {
         System.out.println(word);
         System.out.println(word.toLowerCase());
+        // Doble if en vez de un or, porque por alguna razón no funciona
         if (word.equals(word.toLowerCase())) {
-            return true;
+            if(word.chars().allMatch(Character::isLetter)){
+                return true;
+            }
         }
         return false;
     }

@@ -78,7 +78,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         introducedLetter.setEnabled(false);
 
-        hangmanImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Hangman-6.png"))); // NOI18N
+        hangmanImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Hangman-3.png"))); // NOI18N
 
         tryLetterButton.setText("Probar");
         tryLetterButton.addActionListener(new java.awt.event.ActionListener() {
@@ -233,8 +233,8 @@ public class MainWindow extends javax.swing.JFrame {
         wordField.setText(hangMan.showHiddenWord());
         
         switch(hangMan.getFails().size()){
-            case 1: hangmanImage.setIcon(new ImageIcon("img/Hangman-0.png"));
-            case 2: hangmanImage.setIcon(new ImageIcon("img/Hangman-1.png"));
+            case 1: hangmanImage.setIcon(new ImageIcon("src/img/Hangman-0.png"));
+            case 2: hangmanImage.setIcon(new ImageIcon("Hangman-2.png"));
             case 3: hangmanImage.setIcon(new ImageIcon("img/Hangman-2.png"));
             case 4: hangmanImage.setIcon(new ImageIcon("img/Hangman-3.png"));
             case 5: hangmanImage.setIcon(new ImageIcon("img/Hangman-4.png"));

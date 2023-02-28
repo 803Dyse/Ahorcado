@@ -170,7 +170,7 @@
         <Component class="javax.swing.JLabel" name="hangmanImage">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/Hangman-3.png"/>
+              <Image iconType="3" name="/img/Hangman-0.png"/>
             </Property>
           </Properties>
         </Component>
@@ -183,8 +183,18 @@
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="wordField">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="11" style="1"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="failedLetters">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="11" style="1"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

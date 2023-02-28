@@ -78,7 +78,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         introducedLetter.setEnabled(false);
 
-        hangmanImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Hangman-3.png"))); // NOI18N
+        hangmanImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Hangman-0.png"))); // NOI18N
 
         tryLetterButton.setText("Probar");
         tryLetterButton.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +86,10 @@ public class MainWindow extends javax.swing.JFrame {
                 tryLetterButtonActionPerformed(evt);
             }
         });
+
+        wordField.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+
+        failedLetters.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -232,13 +236,21 @@ public class MainWindow extends javax.swing.JFrame {
             
         wordField.setText(hangMan.showHiddenWord());
         
+        introducedLetter.setText("");
+        
         switch(hangMan.getFails().size()){
-            case 1: hangmanImage.setIcon(new ImageIcon("src/img/Hangman-0.png"));
-            case 2: hangmanImage.setIcon(new ImageIcon("Hangman-2.png"));
-            case 3: hangmanImage.setIcon(new ImageIcon("img/Hangman-2.png"));
-            case 4: hangmanImage.setIcon(new ImageIcon("img/Hangman-3.png"));
-            case 5: hangmanImage.setIcon(new ImageIcon("img/Hangman-4.png"));
-            case 6: hangmanImage.setIcon(new ImageIcon("img/Hangman-5.png"));
+            case 1: hangmanImage.setIcon(new ImageIcon("src/img/Hangman-1.png"));
+                    break;
+            case 2: hangmanImage.setIcon(new ImageIcon("src/img/Hangman-2.png"));
+                    break;
+            case 3: hangmanImage.setIcon(new ImageIcon("src/img/Hangman-3.png"));
+                    break;
+            case 4: hangmanImage.setIcon(new ImageIcon("src/img/Hangman-4.png"));
+                    break;
+            case 5: hangmanImage.setIcon(new ImageIcon("src/img/Hangman-5.png"));
+                    break;
+            case 6: hangmanImage.setIcon(new ImageIcon("src/img/Hangman-6.png"));
+                    break;
         }
             
     }
@@ -249,7 +261,7 @@ public class MainWindow extends javax.swing.JFrame {
      */
     private void tryChar() {
 
-        if (!hangMan.isGameOver()) {
+        if (hangMan.getFails().size()!=5) {
 
             char letter[] = introducedLetter.getText().toCharArray();
 
@@ -260,8 +272,11 @@ public class MainWindow extends javax.swing.JFrame {
             showGameStatus();
 
             System.out.println("DEBUG!!! LETRA INTRODUCIDA: " + firstLetter);
+            
         } else{
+            
             System.out.println("A solucion e: " + hangMan.showFullWord());
+            hangmanImage.setIcon(new ImageIcon("src/img/Hangman-6.png"));
         }
     }
 

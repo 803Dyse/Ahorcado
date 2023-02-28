@@ -5,7 +5,6 @@
 package ui;
 
 import model.HangMan;
-import java.util.Scanner;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -46,7 +45,7 @@ public class MainWindow extends javax.swing.JFrame {
         introducedLetter = new javax.swing.JTextField();
         hangmanImage = new javax.swing.JLabel();
         tryLetterButton = new javax.swing.JButton();
-        word = new javax.swing.JLabel();
+        wordField = new javax.swing.JLabel();
         failedLetters = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,6 +79,11 @@ public class MainWindow extends javax.swing.JFrame {
         hangmanImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Hangman-6.png"))); // NOI18N
 
         tryLetterButton.setText("Probar");
+        tryLetterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tryLetterButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -104,7 +108,7 @@ public class MainWindow extends javax.swing.JFrame {
                                 .addGap(5, 5, 5)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(failedLetters, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(word, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(wordField, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, 18)
                         .addComponent(hangmanImage))
                     .addComponent(title)
@@ -125,7 +129,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addGap(95, 95, 95)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(wordTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(word, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(wordField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(failedText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -167,9 +171,15 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void newGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameButtonActionPerformed
 
-        startNewGame();
+        startNewGame(); // Comeza o xogo
         
+        introducedLetter.enable(); // Habilita o cadro para introducir letras
+
     }//GEN-LAST:event_newGameButtonActionPerformed
+
+    private void tryLetterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tryLetterButtonActionPerformed
+        tryChar();
+    }//GEN-LAST:event_tryLetterButtonActionPerformed
 
     /**
      * Comeza unha nova partida, escollendo un modo de xogo e mostrando 
@@ -181,12 +191,14 @@ public class MainWindow extends javax.swing.JFrame {
 
         Object game = JOptionPane.showInputDialog(this, "Selecciona un modo de xogo:", "Elegir", JOptionPane.QUESTION_MESSAGE, null, options, null);
         
+        String word = "";
+        
         try{
          if (options[0].equals(game)) {
              
                 ArrayWordGenerator randomWord = new ArrayWordGenerator();
-                
-                randomWord.generateWord();
+
+                word = randomWord.generateWord();
                 
             } else if (options[1].equals(game)) {
                 
@@ -196,8 +208,13 @@ public class MainWindow extends javax.swing.JFrame {
                 
                 KeyboardWordGenerator keyboardWord = new KeyboardWordGenerator();
                 
-                keyboardWord.generateWord();
+                word = keyboardWord.generateWord();
             }
+         
+         HangMan hangman = new HangMan(word);
+         
+         wordField.setText(hangman.showHiddenWord());
+
         }catch(GenerateWordException e){
             System.out.println("ERROR");
         }
@@ -217,6 +234,10 @@ public class MainWindow extends javax.swing.JFrame {
      * e mostra o novo estado do xogo
      */
     private void tryChar(){
+        
+        char letter[] = introducedLetter.getText().toCharArray();
+        
+        hangMan.tryChar(letter[0]);
         
     }
     
@@ -268,7 +289,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton newGameButton;
     private javax.swing.JLabel title;
     private javax.swing.JButton tryLetterButton;
-    private javax.swing.JLabel word;
+    private javax.swing.JLabel wordField;
     private javax.swing.JLabel wordTitle;
     // End of variables declaration//GEN-END:variables
 }

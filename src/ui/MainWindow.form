@@ -64,7 +64,7 @@
                                   <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="failedLetters" min="-2" pref="83" max="-2" attributes="0"/>
-                                      <Component id="word" min="-2" pref="83" max="-2" attributes="0"/>
+                                      <Component id="wordField" min="-2" pref="83" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -93,7 +93,7 @@
                           <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="wordTitle" max="32767" attributes="0"/>
-                              <Component id="word" max="32767" attributes="0"/>
+                              <Component id="wordField" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -178,8 +178,11 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Probar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tryLetterButtonActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="word">
+        <Component class="javax.swing.JLabel" name="wordField">
         </Component>
         <Component class="javax.swing.JLabel" name="failedLetters">
         </Component>

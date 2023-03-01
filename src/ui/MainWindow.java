@@ -26,7 +26,6 @@ public class MainWindow extends javax.swing.JFrame {
     public MainWindow() {
         initComponents();
         hangManLabels = new JLabel[6];
-
     }
 
     /**
@@ -255,9 +254,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void newGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameButtonActionPerformed
-
         startNewGame(); // Comeza o xogo
-
     }//GEN-LAST:event_newGameButtonActionPerformed
 
     /**
@@ -377,7 +374,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
 
             System.out.println("DEBUG!!! LETRA INTRODUCIDA: " + firstLetter);
-
         }
     }
 

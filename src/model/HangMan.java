@@ -122,7 +122,6 @@ public class HangMan {
     public boolean maxFailsExceeded() {
         if (fails.size() >= MAX_FAILS) {
             fails.clear();
-            System.out.println("Non te quedan intentos");
             return true;
         } else {
             return false;

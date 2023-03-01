@@ -363,10 +363,7 @@ public class MainWindow extends javax.swing.JFrame {
                 showGameStatus();
             } else {
                 JOptionPane.showMessageDialog(rootPane, "El caracter debe ser del abecedario (a-z).", "Error", HEIGHT);
-                System.out.println("LO ISISTE MAL IJO");
             }
-
-            System.out.println("DEBUG!!! LETRA INTRODUCIDA: " + firstLetter);
         }
     }
 

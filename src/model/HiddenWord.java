@@ -100,8 +100,6 @@ public class HiddenWord {
                 return false;
             }
         }
-
-        System.out.println("Adivinou a palabra");
         return true;
     }
 }

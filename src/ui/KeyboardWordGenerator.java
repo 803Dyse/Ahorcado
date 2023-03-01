@@ -1,6 +1,5 @@
 package ui;
 
-import static java.awt.image.ImageObserver.HEIGHT;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 
@@ -32,8 +31,6 @@ public class KeyboardWordGenerator implements WordGenerator {
         String word = JOptionPane.showInputDialog(pwd ,"Palabra", customWord);
 
         customWord = String.valueOf(word).toLowerCase();
-        
-        System.out.println("DEBUG!!! PALABRA = " + customWord);
         
         return customWord;
     }

@@ -27,8 +27,6 @@ public class GUIKeyboardWordGenerator implements WordGenerator {
 
         customWord = String.valueOf(word);
 
-        System.out.println("DEBUG!!! PALABRA = " + customWord);
-
         if (!isValid(word)) {
             JOptionPane.showMessageDialog(null, "El caracter debe ser del abecedario (a-z).", "Error", HEIGHT);
         }
@@ -43,8 +41,6 @@ public class GUIKeyboardWordGenerator implements WordGenerator {
      * @return Devolve true o false
      */
     private boolean isValid(String word) {
-        System.out.println(word);
-        System.out.println(word.toLowerCase());
         // Doble if en vez de un or, porque por alguna razón no funciona
         if (word.equals(word.toLowerCase())) {
             if(word.chars().allMatch(Character::isLetter)){

@@ -25,7 +25,7 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         initComponents();
-        hangManLabels = new JLabel[hangMan.MAX_FAILS];
+        hangManLabels = new JLabel[6];
 
     }
 
@@ -97,6 +97,7 @@ public class MainWindow extends javax.swing.JFrame {
         );
 
         tryLetterButton.setText("Probar");
+        tryLetterButton.setEnabled(false);
         tryLetterButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tryLetterButtonMouseClicked(evt);
@@ -137,7 +138,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(introducedLetter, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(tryLetterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 78, Short.MAX_VALUE))
+                .addGap(0, 80, Short.MAX_VALUE))
             .addGroup(gamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(gamePanelLayout.createSequentialGroup()
                     .addContainerGap()
@@ -215,10 +216,10 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(gamePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(picturePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(playPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(237, 237, 237))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,7 +231,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(gamePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(74, 74, 74))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(picturePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(playPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -257,7 +258,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         startNewGame(); // Comeza o xogo
 
-        introducedLetter.enable(); // Habilita o cadro para introducir letras
     }//GEN-LAST:event_newGameButtonActionPerformed
 
     /**
@@ -279,13 +279,21 @@ public class MainWindow extends javax.swing.JFrame {
 
                 word = randomWord.generateWord();
 
+                introducedLetter.setEnabled(true); // Habilita o cadro para introducir letras
+
+                tryLetterButton.setEnabled(true); // Habilita o botón de probar letra
+
             } else if (options[1].equals(game)) {
 
                 GUIKeyboardWordGenerator keyboardWord = new GUIKeyboardWordGenerator();
 
                 word = keyboardWord.generateWord();
+
+                introducedLetter.setEnabled(true); // Habilita o cadro para introducir letras
+
+                tryLetterButton.setEnabled(true); // Habilita o botón de probar letra
             }
-            
+
             hangmanImage.setIcon(new ImageIcon("src/img/Hangman-0.png"));
 
             hangMan = new HangMan(word);
@@ -332,10 +340,18 @@ public class MainWindow extends javax.swing.JFrame {
         }
 
         if (hangMan.isGameOver()) {
+
             hangmanImage.setIcon(new ImageIcon("src/img/Hangman-6.png"));
+
             JOptionPane.showMessageDialog(rootPane, "Fin do xogo. Quedaches aforcado!! A palabra oculta era " + hangMan.showFullWord(), "Game Over", HEIGHT);
+
             wordField.setText("");
+
             failedLetters.setText("");
+
+            introducedLetter.setEnabled(false); // Deshabilita o cadro para introducir letras
+
+            tryLetterButton.setEnabled(false); // Deshabilita o botón de probar letra
         }
 
     }
@@ -352,10 +368,10 @@ public class MainWindow extends javax.swing.JFrame {
 
             char firstLetter = Character.toLowerCase(letter[0]);
 
-            if((firstLetter>='a' && firstLetter<='z')){
+            if ((firstLetter >= 'a' && firstLetter <= 'z')) {
                 hangMan.tryChar(firstLetter);
                 showGameStatus();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(rootPane, "El caracter debe ser del abecedario (a-z).", "Error", HEIGHT);
                 System.out.println("LO ISISTE MAL IJO");
             }

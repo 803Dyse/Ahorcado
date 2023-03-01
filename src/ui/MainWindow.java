@@ -25,7 +25,7 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         initComponents();
-        hangManLabels = new JLabel[6];
+        hangManLabels = new JLabel[HangMan.MAX_FAILS];
     }
 
     /**
@@ -309,29 +309,46 @@ public class MainWindow extends javax.swing.JFrame {
      */
     private void showGameStatus() {
 
-        failedLetters.setText(hangMan.getStringFails());
-
+        //failedLetters.setText(hangMan.getStringFails());
         wordField.setText(hangMan.showHiddenWord());
 
         introducedLetter.setText("");
 
         switch (hangMan.getFails().size()) {
             case 1:
+                hangManLabels[0] = new JLabel(hangMan.getFails().get(0).toString());
+                hangManLabels[0].setVisible(true);
+                failedLetters.setText(hangManLabels[0].getText());
                 hangmanImage.setIcon(new ImageIcon("src/img/Hangman-1.png"));
                 break;
             case 2:
+                hangManLabels[1] = new JLabel(hangMan.getFails().get(1).toString());
+                hangManLabels[1].setVisible(true);
+                failedLetters.setText(hangManLabels[1].getText());
                 hangmanImage.setIcon(new ImageIcon("src/img/Hangman-2.png"));
                 break;
             case 3:
+                hangManLabels[2] = new JLabel(hangMan.getFails().get(2).toString());
+                hangManLabels[2].setVisible(true);
+                failedLetters.setText(hangManLabels[2].getText());
                 hangmanImage.setIcon(new ImageIcon("src/img/Hangman-3.png"));
                 break;
             case 4:
+                hangManLabels[3] = new JLabel(hangMan.getFails().get(3).toString());
+                hangManLabels[3].setVisible(true);
+                failedLetters.setText(hangManLabels[3].getText());
                 hangmanImage.setIcon(new ImageIcon("src/img/Hangman-4.png"));
                 break;
             case 5:
+                hangManLabels[4] = new JLabel(hangMan.getFails().get(4).toString());
+                hangManLabels[4].setVisible(true);
+                failedLetters.setText(hangManLabels[4].getText());
                 hangmanImage.setIcon(new ImageIcon("src/img/Hangman-5.png"));
                 break;
             case 6:
+                hangManLabels[5] = new JLabel(hangMan.getFails().get(5).toString());
+                hangManLabels[5].setVisible(true);
+                failedLetters.setText(hangManLabels[5].getText());
                 hangmanImage.setIcon(new ImageIcon("src/img/Hangman-6.png"));
                 break;
         }

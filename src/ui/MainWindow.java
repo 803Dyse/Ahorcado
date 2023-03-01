@@ -11,8 +11,10 @@ import javax.swing.JOptionPane;
 import java.awt.event.KeyEvent;
 
 /**
- *
- * @author Alejandro Martínez Domínguez
+ * Clase JFrame que actua como interfáz do xogo do aforcado.
+ * 
+ * @author Alejandro Martínez Domínguez, Bilo Alejandro Martins González y Raúl
+ * Parada de la Fuente
  */
 public class MainWindow extends javax.swing.JFrame {
 
@@ -21,6 +23,8 @@ public class MainWindow extends javax.swing.JFrame {
     private JLabel hangManLabels[];
 
     /**
+     * Constructor de la clase
+     * 
      * Creates new form MainWindow
      */
     public MainWindow() {
@@ -240,17 +244,17 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tryLetterButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tryLetterButtonMouseClicked
-        tryChar();
+        tryChar(); // Chama a tryChar ao facer click sobre "Probar"
     }//GEN-LAST:event_tryLetterButtonMouseClicked
 
     private void introducedLetterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_introducedLetterKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            tryChar();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) { // Pulsando enter chama a tryChar
+            tryChar(); 
         }
     }//GEN-LAST:event_introducedLetterKeyPressed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
-        this.dispose();
+        this.dispose(); // Cerra a ventá
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void newGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameButtonActionPerformed
@@ -270,7 +274,7 @@ public class MainWindow extends javax.swing.JFrame {
         String word = "";
 
         try {
-            if (options[0].equals(game)) {
+            if (options[0].equals(game)) { // Se se escolle a primeira opción...
 
                 ArrayWordGenerator randomWord = new ArrayWordGenerator();
 
@@ -280,7 +284,7 @@ public class MainWindow extends javax.swing.JFrame {
 
                 tryLetterButton.setEnabled(true); // Habilita o botón de probar letra
 
-            } else if (options[1].equals(game)) {
+            } else if (options[1].equals(game)) { // Se se escolle a segunda opción...
 
                 GUIKeyboardWordGenerator keyboardWord = new GUIKeyboardWordGenerator();
 
@@ -291,7 +295,7 @@ public class MainWindow extends javax.swing.JFrame {
                 tryLetterButton.setEnabled(true); // Habilita o botón de probar letra
             }
 
-            hangmanImage.setIcon(new ImageIcon("src/img/Hangman-0.png"));
+            hangmanImage.setIcon(new ImageIcon("src/img/Hangman-0.png")); // Se setea a primera foto de hangMan por defecto
 
             hangMan = new HangMan(word);
 

@@ -9,7 +9,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 
 /**
- *
+ * Método que xenera unha palabra personalizada
+ * 
  * @author Alejandro Martínez Domínguez, Bilo Alejandro Martins González y Raúl
  * Parada de la Fuente
  */

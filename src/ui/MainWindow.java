@@ -309,18 +309,24 @@ public class MainWindow extends javax.swing.JFrame {
      */
     private void showGameStatus() {
 
-        //failedLetters.setText(hangMan.getStringFails());
         wordField.setText(hangMan.showHiddenWord());
 
         introducedLetter.setText("");
 
+        String savedLetters = "";
+
         for (int i = 0; i < hangMan.getFails().size(); i++) {
 
             hangManLabels[i] = new JLabel(hangMan.getFails().get(i).toString());
-            hangManLabels[i].setVisible(true);
-            failedLetters.setText(hangManLabels[i].getText());
-            hangmanImage.setIcon(new ImageIcon("src/img/Hangman-" + i + ".png"));
             
+            hangManLabels[i].setVisible(true);
+            
+            savedLetters += hangManLabels[i].getText();
+            
+            failedLetters.setText(savedLetters);
+            
+            hangmanImage.setIcon(new ImageIcon("src/img/Hangman-" + i + ".png"));
+
         }
 
         if (hangMan.isGameOver()) {

@@ -11,8 +11,8 @@ import javax.swing.JOptionPane;
 import java.awt.event.KeyEvent;
 
 /**
- * Clase JFrame que actua como interfáz do xogo do aforcado.
- * 
+ * Clase JFrame que actua como interfaz do xogo do aforcado
+ *
  * @author Alejandro Martínez Domínguez, Bilo Alejandro Martins González y Raúl
  * Parada de la Fuente
  */
@@ -23,8 +23,8 @@ public class MainWindow extends javax.swing.JFrame {
     private JLabel hangManLabels[];
 
     /**
-     * Constructor de la clase
-     * 
+     * Constructor da clase
+     *
      * Creates new form MainWindow
      */
     public MainWindow() {
@@ -249,7 +249,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void introducedLetterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_introducedLetterKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) { // Pulsando enter chama a tryChar
-            tryChar(); 
+            tryChar();
         }
     }//GEN-LAST:event_introducedLetterKeyPressed
 
@@ -295,14 +295,15 @@ public class MainWindow extends javax.swing.JFrame {
                 tryLetterButton.setEnabled(true); // Habilita o botón de probar letra
             }
 
-            hangmanImage.setIcon(new ImageIcon("src/img/Hangman-0.png")); // Se setea a primera foto de hangMan por defecto
+            // A ruta comeza en / é necesario
+            hangmanImage.setIcon(new ImageIcon(getClass().getResource("/img/Hangman-0.png"))); // Se setea a primera foto de hangMan por defecto
 
             hangMan = new HangMan(word);
 
             wordField.setText(hangMan.showHiddenWord());
 
         } catch (GenerateWordException e) {
-            System.out.println("ERROR");
+            e.setVisible(true);
         }
 
     }
@@ -322,22 +323,23 @@ public class MainWindow extends javax.swing.JFrame {
         for (int i = 0; i < hangMan.getFails().size(); i++) {
 
             hangManLabels[i] = new JLabel(hangMan.getFails().get(i).toString());
-            
-            hangManLabels[i].setVisible(true);
-            
-            savedLetters += hangManLabels[i].getText();
-            
-            failedLetters.setText(savedLetters);
-            
-            hangmanImage.setIcon(new ImageIcon("src/img/Hangman-" + i + ".png"));
 
+            hangManLabels[i].setVisible(true);
+
+            savedLetters += hangManLabels[i].getText();
+
+            failedLetters.setText(savedLetters);
+
+            // A ruta comeza en / é necesario
+            hangmanImage.setIcon(new ImageIcon(getClass().getResource("/img/Hangman-" + i + ".png")));
         }
 
         if (hangMan.isGameOver()) {
 
-            hangmanImage.setIcon(new ImageIcon("src/img/Hangman-6.png"));
+            // A ruta comeza en / é necesario
+            hangmanImage.setIcon(new ImageIcon(getClass().getResource("/img/Hangman-6.png")));
 
-            JOptionPane.showMessageDialog(rootPane, "Fin do xogo. Quedaches aforcado!! A palabra oculta era " + hangMan.showFullWord(), "Game Over", HEIGHT);
+            JOptionPane.showMessageDialog(rootPane, "Fin do xogo. Quedaches aforcado!! A palabra oculta era " + hangMan.showFullWord(), "Game Over", JOptionPane.WARNING_MESSAGE);
 
             wordField.setText("");
 
@@ -360,15 +362,23 @@ public class MainWindow extends javax.swing.JFrame {
 
             char letter[] = introducedLetter.getText().toCharArray();
 
-            char firstLetter = Character.toLowerCase(letter[0]);
+            // Comproba se hai algún valor no cadro de texto de introducedLetter
+            // Se non hai algún valor indica que está en branco
+            if (!introducedLetter.getText().equals("")) {
 
-            if ((firstLetter >= 'a' && firstLetter <= 'z')) {
-                hangMan.tryChar(firstLetter);
-                showGameStatus();
+                char firstLetter = Character.toLowerCase(letter[0]);
+
+                if ((firstLetter >= 'a' && firstLetter <= 'z')) {
+                    hangMan.tryChar(firstLetter);
+                    showGameStatus();
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "El caracter debe ser do abecedario (a-z)", "Error", JOptionPane.WARNING_MESSAGE);
+                }
             } else {
-                JOptionPane.showMessageDialog(rootPane, "El caracter debe ser del abecedario (a-z).", "Error", HEIGHT);
+                JOptionPane.showMessageDialog(rootPane, "Non hai ningun caracter no cadro do texto", "Error", JOptionPane.WARNING_MESSAGE);
             }
         }
+
     }
 
     /**

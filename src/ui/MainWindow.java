@@ -246,9 +246,9 @@ public class MainWindow extends javax.swing.JFrame {
     private void tryLetterButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tryLetterButtonMouseClicked
         // TryCatch vacío porque al pulsar el botón de try mientras está deshabilitado
         // salta un error
-        try{
-        tryChar(); // Chama a tryChar ao facer click sobre "Probar"
-        }catch(NullPointerException e){
+        try {
+            tryChar(); // Chama a tryChar ao facer click sobre "Probar"
+        } catch (NullPointerException e) {
         }
     }//GEN-LAST:event_tryLetterButtonMouseClicked
 
@@ -334,7 +334,7 @@ public class MainWindow extends javax.swing.JFrame {
             savedLetters += hangManLabels[i].getText();
 
             failedLetters.setText(savedLetters += "-");
-            
+
             // A ruta comeza en / é necesario
             hangmanImage.setIcon(new ImageIcon(getClass().getResource("/img/Hangman-" + i + ".png")));
         }

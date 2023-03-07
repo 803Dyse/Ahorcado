@@ -244,7 +244,12 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tryLetterButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tryLetterButtonMouseClicked
+        // TryCatch vacío porque al pulsar el botón de try mientras está deshabilitado
+        // salta un error
+        try{
         tryChar(); // Chama a tryChar ao facer click sobre "Probar"
+        }catch(NullPointerException e){
+        }
     }//GEN-LAST:event_tryLetterButtonMouseClicked
 
     private void introducedLetterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_introducedLetterKeyPressed
@@ -328,8 +333,8 @@ public class MainWindow extends javax.swing.JFrame {
 
             savedLetters += hangManLabels[i].getText();
 
-            failedLetters.setText(savedLetters);
-
+            failedLetters.setText(savedLetters += "-");
+            
             // A ruta comeza en / é necesario
             hangmanImage.setIcon(new ImageIcon(getClass().getResource("/img/Hangman-" + i + ".png")));
         }

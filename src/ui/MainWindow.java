@@ -333,7 +333,7 @@ public class MainWindow extends javax.swing.JFrame {
 
             savedLetters += hangManLabels[i].getText();
 
-            failedLetters.setText(savedLetters += "-");
+            failedLetters.setText(savedLetters += " ");
 
             // A ruta comeza en / é necesario
             hangmanImage.setIcon(new ImageIcon(getClass().getResource("/img/Hangman-" + i + ".png")));

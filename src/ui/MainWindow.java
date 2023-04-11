@@ -284,6 +284,11 @@ public class MainWindow extends javax.swing.JFrame {
             if (options[0].equals(game)) { // Se se escolle a primeira opción...
 
                 wordGen = new ArrayWordGenerator();
+                
+                // Descomentar la linea inferior y comentar la superior si se
+                // quiere utilizar la base de datos en vez de el array.
+                
+                // wordGen = new DBWordGenerator();
 
             } else { // Se se escolle a segunda opción...
 

@@ -6,10 +6,14 @@ package ui;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Random;
 
 /**
  *
- * @author Alejandro Martínez Domínguez
+ * @author Alejandro Martínez Domínguez, Bilo Alejandro Martins González y Raúl
+ * Parada de la Fuente
  */
 public class DBWordGenerator implements WordGenerator{
     
@@ -27,7 +31,53 @@ public class DBWordGenerator implements WordGenerator{
             ex.printStackTrace();
         }
         
+        String sql = "SELECT COUNT(word) as count FROM word";
+        String value = null;
+        try {
+            Statement st = c.createStatement();
+            ResultSet rst = st.executeQuery(sql);
+            value = rst.getString("count");
+            
+            rst.close();
+            st.close();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         
+        System.out.println(value);
+        
+        Random random = new Random();
+        
+        int number = random.nextInt(Integer.parseInt(value));
+        int index = number + 1;
+        
+        for (int i = 0; i < index; i++) {
+            
+            
+            
+            
+            if (i == index) {
+                
+            }
+        }
+        
+        sql = "SELECT word FROM word WHERE ";
+        
+        try {
+            Statement st = c.createStatement();
+            ResultSet rst = st.executeQuery(sql);
+            value = rst.getString("count");
+            
+            rst.close();
+            st.close();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
+        
+        return null;
         
     }
     

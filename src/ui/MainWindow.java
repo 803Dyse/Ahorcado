@@ -6,7 +6,6 @@ package ui;
 
 import javax.swing.ImageIcon;
 import model.HangMan;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.awt.event.KeyEvent;
 
@@ -20,8 +19,6 @@ public class MainWindow extends javax.swing.JFrame {
 
     private HangMan hangMan;
 
-    private JLabel hangManLabels[];
-
     /**
      * Constructor da clase
      *
@@ -29,7 +26,6 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         initComponents();
-        hangManLabels = new JLabel[HangMan.MAX_FAILS];
     }
 
     /**
@@ -276,29 +272,25 @@ public class MainWindow extends javax.swing.JFrame {
 
         Object game = JOptionPane.showInputDialog(this, "Selecciona un modo de xogo:", "Elegir", JOptionPane.QUESTION_MESSAGE, null, options, null);
 
-        String word = "";
+        String word;
 
         try {
+            WordGenerator wordGen;
+
             if (options[0].equals(game)) { // Se se escolle a primeira opción...
 
-                ArrayWordGenerator randomWord = new ArrayWordGenerator();
+                wordGen = new ArrayWordGenerator();
 
-                word = randomWord.generateWord();
+            } else { // Se se escolle a segunda opción...
 
-                introducedLetter.setEnabled(true); // Habilita o cadro para introducir letras
-
-                tryLetterButton.setEnabled(true); // Habilita o botón de probar letra
-
-            } else if (options[1].equals(game)) { // Se se escolle a segunda opción...
-
-                GUIKeyboardWordGenerator keyboardWord = new GUIKeyboardWordGenerator();
-
-                word = keyboardWord.generateWord();
-
-                introducedLetter.setEnabled(true); // Habilita o cadro para introducir letras
-
-                tryLetterButton.setEnabled(true); // Habilita o botón de probar letra
+                wordGen = new GUIKeyboardWordGenerator();
             }
+
+            word = wordGen.generateWord();
+
+            introducedLetter.setEnabled(true); // Habilita o cadro para introducir letras
+
+            tryLetterButton.setEnabled(true); // Habilita o botón de probar letra
 
             // A ruta comeza en / é necesario
             hangmanImage.setIcon(new ImageIcon(getClass().getResource("/img/Hangman-0.png"))); // Se setea a primera foto de hangMan por defecto
@@ -326,35 +318,32 @@ public class MainWindow extends javax.swing.JFrame {
         String savedLetters = "";
 
         for (int i = 0; i < hangMan.getFails().size(); i++) {
-
-            hangManLabels[i] = new JLabel(hangMan.getFails().get(i).toString());
-
-            hangManLabels[i].setVisible(true);
-
-            savedLetters += hangManLabels[i].getText();
+            
+            savedLetters += hangMan.getFails().get(i).toString();
 
             failedLetters.setText(savedLetters += " ");
 
             // A ruta comeza en / é necesario
             hangmanImage.setIcon(new ImageIcon(getClass().getResource("/img/Hangman-" + i + ".png")));
+
+            if (hangMan.isGameOver()) {
+
+                // A ruta comeza en / é necesario
+                hangmanImage.setIcon(new ImageIcon(getClass().getResource("/img/Hangman-6.png")));
+
+                JOptionPane.showMessageDialog(rootPane, "Fin do xogo. Quedaches aforcado!! A palabra oculta era " + hangMan.showFullWord(), "Game Over", JOptionPane.WARNING_MESSAGE);
+
+                wordField.setText("");
+
+                failedLetters.setText("");
+
+                introducedLetter.setEnabled(false); // Deshabilita o cadro para introducir letras
+
+                tryLetterButton.setEnabled(false); // Deshabilita o botón de probar letra
+
+            }
+
         }
-
-        if (hangMan.isGameOver()) {
-
-            // A ruta comeza en / é necesario
-            hangmanImage.setIcon(new ImageIcon(getClass().getResource("/img/Hangman-6.png")));
-
-            JOptionPane.showMessageDialog(rootPane, "Fin do xogo. Quedaches aforcado!! A palabra oculta era " + hangMan.showFullWord(), "Game Over", JOptionPane.WARNING_MESSAGE);
-
-            wordField.setText("");
-
-            failedLetters.setText("");
-
-            introducedLetter.setEnabled(false); // Deshabilita o cadro para introducir letras
-
-            tryLetterButton.setEnabled(false); // Deshabilita o botón de probar letra
-        }
-
     }
 
     /**

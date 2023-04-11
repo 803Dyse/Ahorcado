@@ -22,7 +22,7 @@ public class HangMan {
      * ArrayList de caracteres no que se van almacenando as letras introducidas
      * polo usuario que non están na palabra oculta
      */
-    private ArrayList fails;
+    private ArrayList<Character> fails;
 
     /**
      * O número máximo de fallos que pode cometer o xogador antes de darlle a
@@ -38,7 +38,7 @@ public class HangMan {
      */
     public HangMan(String hangMan) {
         hiddenWord = new HiddenWord(hangMan);
-        fails = new ArrayList();
+        fails = new ArrayList<>();
     }
 
     /**
@@ -62,7 +62,7 @@ public class HangMan {
     public String getStringFails() {
         String failsString = "";
         for (int i = 0; i < fails.size(); i++) {
-            failsString += fails.get(i);
+            failsString += fails.get(i) + " ";
         }
         return failsString;
     }

@@ -11,7 +11,8 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
+# Se comenta *.jar para que se suban a Github los archivos .jar
+# *.jar
 *.war
 *.nar
 *.ear

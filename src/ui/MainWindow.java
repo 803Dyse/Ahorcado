@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import model.HangMan;
 import javax.swing.JOptionPane;
 import java.awt.event.KeyEvent;
+import javax.swing.JLabel;
 
 /**
  * Clase JFrame que actua como interfaz do xogo do aforcado
@@ -19,6 +20,8 @@ public class MainWindow extends javax.swing.JFrame {
 
     private HangMan hangMan;
 
+    private JLabel hangManLabels[];
+
     /**
      * Constructor da clase
      *
@@ -26,6 +29,7 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         initComponents();
+        hangManLabels = new JLabel[HangMan.MAX_FAILS];
     }
 
     /**
@@ -318,14 +322,19 @@ public class MainWindow extends javax.swing.JFrame {
         String savedLetters = "";
 
         for (int i = 0; i < hangMan.getFails().size(); i++) {
-            
+
             savedLetters += hangMan.getFails().get(i).toString();
 
             failedLetters.setText(savedLetters += " ");
 
-            // A ruta comeza en / é necesario
-            hangmanImage.setIcon(new ImageIcon(getClass().getResource("/img/Hangman-" + i + ".png")));
+            hangManLabels[i] = new JLabel(hangMan.getFails().get(i).toString());
 
+            // A ruta comeza en / é necesario
+            hangManLabels[i].setIcon(new ImageIcon(getClass().getResource("/img/Hangman-" + i + ".png")));
+            
+            // Setea el icono de hangManLabels[i] obtenido mediante getIcon
+            hangmanImage.setIcon(hangManLabels[i].getIcon());
+            
             if (hangMan.isGameOver()) {
 
                 // A ruta comeza en / é necesario

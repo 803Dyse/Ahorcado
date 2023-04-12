@@ -6,9 +6,9 @@ package ui;
 
 import javax.swing.ImageIcon;
 import model.HangMan;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.awt.event.KeyEvent;
-import javax.swing.JLabel;
 
 /**
  * Clase JFrame que actua como interfaz do xogo do aforcado
@@ -276,11 +276,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         Object game = JOptionPane.showInputDialog(this, "Selecciona un modo de xogo:", "Elegir", JOptionPane.QUESTION_MESSAGE, null, options, null);
 
-        String word;
+        String word = "";
 
         try {
             WordGenerator wordGen;
-
+            
             if (options[0].equals(game)) { // Se se escolle a primeira opción...
 
                 // wordGen = new ArrayWordGenerator();
@@ -290,13 +290,15 @@ public class MainWindow extends javax.swing.JFrame {
                 
                 wordGen = new DBWordGenerator();
 
+
             } else { // Se se escolle a segunda opción...
 
                 wordGen = new GUIKeyboardWordGenerator();
+
             }
-
+            
             word = wordGen.generateWord();
-
+            
             introducedLetter.setEnabled(true); // Habilita o cadro para introducir letras
 
             tryLetterButton.setEnabled(true); // Habilita o botón de probar letra
@@ -328,36 +330,34 @@ public class MainWindow extends javax.swing.JFrame {
 
         for (int i = 0; i < hangMan.getFails().size(); i++) {
 
+            hangManLabels[i] = new JLabel();
+
+            hangManLabels[i].setVisible(true);
+
             savedLetters += hangMan.getFails().get(i).toString();
 
             failedLetters.setText(savedLetters += " ");
 
-            hangManLabels[i] = new JLabel(hangMan.getFails().get(i).toString());
+            // A ruta comeza en / é necesario
+            hangmanImage.setIcon(new ImageIcon(getClass().getResource("/img/Hangman-" + i + ".png")));
+        }
+
+        if (hangMan.isGameOver()) {
 
             // A ruta comeza en / é necesario
-            hangManLabels[i].setIcon(new ImageIcon(getClass().getResource("/img/Hangman-" + i + ".png")));
-            
-            // Setea el icono de hangManLabels[i] obtenido mediante getIcon
-            hangmanImage.setIcon(hangManLabels[i].getIcon());
-            
-            if (hangMan.isGameOver()) {
+            hangmanImage.setIcon(new ImageIcon(getClass().getResource("/img/Hangman-6.png")));
 
-                // A ruta comeza en / é necesario
-                hangmanImage.setIcon(new ImageIcon(getClass().getResource("/img/Hangman-6.png")));
+            JOptionPane.showMessageDialog(rootPane, "Fin do xogo. Quedaches aforcado!! A palabra oculta era " + hangMan.showFullWord(), "Game Over", JOptionPane.WARNING_MESSAGE);
 
-                JOptionPane.showMessageDialog(rootPane, "Fin do xogo. Quedaches aforcado!! A palabra oculta era " + hangMan.showFullWord(), "Game Over", JOptionPane.WARNING_MESSAGE);
+            wordField.setText("");
 
-                wordField.setText("");
+            failedLetters.setText("");
 
-                failedLetters.setText("");
+            introducedLetter.setEnabled(false); // Deshabilita o cadro para introducir letras
 
-                introducedLetter.setEnabled(false); // Deshabilita o cadro para introducir letras
-
-                tryLetterButton.setEnabled(false); // Deshabilita o botón de probar letra
-
-            }
-
+            tryLetterButton.setEnabled(false); // Deshabilita o botón de probar letra
         }
+
     }
 
     /**

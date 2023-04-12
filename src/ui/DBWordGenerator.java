@@ -12,6 +12,8 @@ import java.util.Random;
 
 /**
  *
+ * Clase que xenera unha palabra a adiviñar almacenada nunha base de datos.
+ * 
  * @author Alejandro Martínez Domínguez, Bilo Alejandro Martins González y Raúl
  * Parada de la Fuente
  */
@@ -48,8 +50,10 @@ public class DBWordGenerator implements WordGenerator {
 
         System.out.println("NUMBER OF WORDS: " + value);
 
+        
         Random random = new Random();
-
+        // Genera un número aleatorio tomando como máximo el valor devuelto
+        // con el count de la consulta anterior.
         int number = random.nextInt(Integer.parseInt(value));
         System.out.println("RANDOM NUMBER: " + number);
         String randomWord = "";

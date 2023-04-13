@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,9 +28,8 @@ public class DBWordGenerator implements WordGenerator {
         // Crea la conexión con la base de datos word.db
         try {
             c = DriverManager.getConnection("jdbc:sqlite:db/word.db");
-            System.out.println("Conexion realizada con exito");
         } catch (Exception ex) {
-            System.out.println("A conexión co servidor de bases de datos non se puido establecer.");
+            JOptionPane.showMessageDialog(null, "A conexión co servidor de bases de datos non se puido establecer.", "Error", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
 
@@ -47,15 +47,11 @@ public class DBWordGenerator implements WordGenerator {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
-        System.out.println("NUMBER OF WORDS: " + value);
-
         
         Random random = new Random();
         // Genera un número aleatorio tomando como máximo el valor devuelto
         // con el count de la consulta anterior.
         int number = random.nextInt(Integer.parseInt(value));
-        System.out.println("RANDOM NUMBER: " + number);
         String randomWord = "";
 
         try {
@@ -70,8 +66,6 @@ public class DBWordGenerator implements WordGenerator {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        System.out.println("WORD: " + randomWord);
-        System.out.println("------------------");
         return randomWord;
 
     }

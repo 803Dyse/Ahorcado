@@ -9,8 +9,6 @@ import model.HangMan;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.awt.event.KeyEvent;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -297,7 +295,7 @@ public class MainWindow extends javax.swing.JFrame {
                 default: // Ao pulsar cancelar por exemplo
                     return;
             }
-            
+
             word = wordGen.generateWord();
 
             introducedLetter.setEnabled(true); // Habilita o cadro para introducir letras

@@ -9,6 +9,9 @@ import model.HangMan;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.awt.event.KeyEvent;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Clase JFrame que actua como interfaz do xogo do aforcado
@@ -272,33 +275,31 @@ public class MainWindow extends javax.swing.JFrame {
      */
     private void startNewGame() {
 
-        String[] options = {"Un xogador, xerando a palabra ao azar", "Dous xogadores, escribindo unha palabra personalizada"};
+        String[] options = {"Un xogador, xerando a palabra ao azar", "Un xogador, xerando unha palabra aleatoria da base de datos", "Dous xogadores, escribindo unha palabra personalizada"};
 
         Object game = JOptionPane.showInputDialog(this, "Selecciona un modo de xogo:", "Elegir", JOptionPane.QUESTION_MESSAGE, null, options, null);
 
-        String word = "";
+        String word;
 
         try {
             WordGenerator wordGen;
-            
-            if (options[0].equals(game)) { // Se se escolle a primeira opción...
 
-                // wordGen = new ArrayWordGenerator();
-                
-                // Descomentar la linea inferior y comentar la superior si se
-                // quiere utilizar la base de datos en vez de el array.
-                
-                wordGen = new DBWordGenerator();
-
-
-            } else { // Se se escolle a segunda opción...
-
-                wordGen = new GUIKeyboardWordGenerator();
-
+            switch (Arrays.asList(options).indexOf(game)) {
+                case 0: // Se se escolle a primeira opción...
+                    wordGen = new ArrayWordGenerator();
+                    break;
+                case 1: // Se se escolle a segunda opción...
+                    wordGen = new DBWordGenerator();
+                    break;
+                case 2: // Se se escolle a terceira opción...
+                    wordGen = new GUIKeyboardWordGenerator();
+                    break;
+                default: // Ao pulsar cancelar por exemplo
+                    return;
             }
             
             word = wordGen.generateWord();
-            
+
             introducedLetter.setEnabled(true); // Habilita o cadro para introducir letras
 
             tryLetterButton.setEnabled(true); // Habilita o botón de probar letra

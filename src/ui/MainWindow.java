@@ -9,7 +9,6 @@ import model.HangMan;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.awt.event.KeyEvent;
-import java.util.Arrays;
 
 /**
  * Clase JFrame que actua como interfaz do xogo do aforcado
@@ -277,12 +276,26 @@ public class MainWindow extends javax.swing.JFrame {
 
         Object game = JOptionPane.showInputDialog(this, "Selecciona un modo de xogo:", "Elegir", JOptionPane.QUESTION_MESSAGE, null, options, null);
 
+        int gameOption = 0;
+
         String word;
 
         try {
             WordGenerator wordGen;
 
-            switch (Arrays.asList(options).indexOf(game)) {
+            // Recorremos o array de options para saber a option que escolleu o usuario
+            for (int i = 0; i < options.length; i++) {
+                if (options[i].equals(game) && game != null) {
+                    // O i indica a posición da option escollida polo usuario
+                    // Que se iguala ao gameOption
+                    gameOption = i;
+                } else {
+                    // Si o usuario pulsa cancelar a posición é -1 e no switch va por default
+                    gameOption = -1;
+                }
+            }
+
+            switch (gameOption) {
                 case 0: // Se se escolle a primeira opción...
                     wordGen = new ArrayWordGenerator();
                     break;

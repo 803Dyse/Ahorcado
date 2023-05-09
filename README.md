@@ -8,5 +8,5 @@ Nuestro segundo proyecto de programación (un juego del ahorcado).
 <li>❗ Parte 3 - Pendiente solucionar un par de errores.</li>
 <li>✅ Parte 4</li>
 <li>❌ Parte 5</li>
-<li>❌ Parte 6</li>
+<li>❌ Parte 6 (Opcional)</li>
 </ul>

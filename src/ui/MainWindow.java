@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package ui;
 
 import javax.swing.ImageIcon;
@@ -289,6 +285,7 @@ public class MainWindow extends javax.swing.JFrame {
                     // O i indica a posición da option escollida polo usuario
                     // Que se iguala ao gameOption
                     gameOption = i;
+                    break;
                 } else {
                     // Si o usuario pulsa cancelar a posición é -1 e no switch va por default
                     gameOption = -1;
@@ -330,6 +327,7 @@ public class MainWindow extends javax.swing.JFrame {
         }
 
     }
+
 
     /**
      * Mostra o estado da partida co estado da palabra oculta, letras falladas e

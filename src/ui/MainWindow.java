@@ -272,7 +272,7 @@ public class MainWindow extends javax.swing.JFrame {
      */
     private void startNewGame() {
 
-        String[] options = {"Un xogador, xerando a palabra ao azar", "Un xogador, xerando unha palabra aleatoria da base de datos", "Dous xogadores, escribindo unha palabra personalizada"};
+        String[] options = {"Un xogador, xerando a palabra ao azar", "Un xogador, xerando unha palabra aleatoria da base de datos", "Un xogador, xerando unha palabra aleatoria dun arquivo de texto", "Dous xogadores, escribindo unha palabra personalizada"};
 
         Object game = JOptionPane.showInputDialog(this, "Selecciona un modo de xogo:", "Elegir", JOptionPane.QUESTION_MESSAGE, null, options, null);
 
@@ -303,6 +303,9 @@ public class MainWindow extends javax.swing.JFrame {
                     wordGen = new DBWordGenerator();
                     break;
                 case 2: // Se se escolle a terceira opción...
+                    wordGen = new FileWordGenerator();
+                    break;
+                case 3: // Cuarta opción
                     wordGen = new GUIKeyboardWordGenerator();
                     break;
                 default: // Ao pulsar cancelar por exemplo

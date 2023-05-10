@@ -1,6 +1,8 @@
 # Ahorcado
 Nuestro segundo proyecto de programación (un juego del ahorcado).
 
+### 🎉 Proyecto terminado! 🎉
+
 ## Objetivos
 <ul>
   <li>✅ Parte 1</li>
